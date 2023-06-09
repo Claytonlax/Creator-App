@@ -8,6 +8,41 @@
 body{
     background-color: rgb(190, 188, 187)
 }
+
+.enter-username-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;  
+    padding: 30px;
+}
+
+
+.title-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;  
+}
+
+
+
+.platforms{
+    background-color: #ddd;
+    border: solid;
+    border-color: aliceblue;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 0 0 3px 2px;
+    
+}
+
+
 #title-container{
     display: flex;
     padding: 20px;
