@@ -4,3 +4,41 @@
     font-family: 'Roboto', sans-serif;;
 }
 
+
+body{
+    background-color: rgb(190, 188, 187)
+}
+#title-container{
+    display: flex;
+    padding: 20px;
+    width:50%;
+}
+#title{
+    position:absolute;
+    width: 672px;
+    height: 77px;
+    left: 48px;
+    top: 31px;
+    font-style:normal;
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+.goal-input-container{
+    width:100%
+}
+
+.user-goal-input{
+    position: absolute;
+    width: 701px;
+    height: 235px;
+    left: 151px;
+    top: 243px;
+    
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+}
