@@ -24,13 +24,11 @@ body{
   padding: 5px;  
 }
 
-
-
 .platforms{
     background-color: #ddd;
     border: solid;
     border-color: aliceblue;
-    color: black;
+    color: rgb(31, 31, 31);
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
@@ -38,10 +36,9 @@ body{
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 16px;
-    box-shadow: 0 0 3px 2px;
+    box-shadow: 1px 2px 5px 1px;
     
 }
-
 
 #title-container{
     display: flex;
@@ -62,7 +59,7 @@ body{
 }
 
 .goal-input-container{
-    width:100%
+    width:100%;
 }
 
 .user-goal-input{
@@ -76,4 +73,24 @@ body{
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
+}
+
+.widget-contianer{
+    display:flex;
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+
+}
+
+.widget-box{
+    background-color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    bottom: 8px;
+
 }
