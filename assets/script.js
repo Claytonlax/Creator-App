@@ -1,3 +1,4 @@
+
 var activatedButton = document.getElementsByClassName("platforms");
 
 
@@ -112,3 +113,4 @@ fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&
 //! Vista Print
 //! Awesome Merch
 //! Captiv8
+

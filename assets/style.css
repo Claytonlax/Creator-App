@@ -8,6 +8,38 @@
 body{
     background-color: rgb(190, 188, 187)
 }
+
+.enter-username-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;  
+    padding: 30px;
+}
+
+
+.title-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;  
+}
+
+.platforms{
+    background-color: #ddd;
+    border: solid;
+    border-color: aliceblue;
+    color: rgb(31, 31, 31);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 1px 2px 5px 1px;
+    
+}
+
 #title-container{
     display: flex;
     padding: 20px;
@@ -27,7 +59,31 @@ body{
 }
 
 .goal-input-container{
-    width:100%
+    width:100%;
+    display: grid;
+}
+
+.container{
+    display: inline-block;
+}
+
+#button-container{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10px;
+    
+    
+}
+
+button:hover{
+    background-color: rgb(110, 110, 235)
+}
+
+button.active{
+    background-color: rgb(37, 69, 253);
+    
 }
 
 .user-goal-input{
@@ -41,4 +97,24 @@ body{
     font-weight: 700;
     font-size: 32px;
     line-height: 39px;
+}
+
+.widget-contianer{
+    display:flex;
+    width: 100vw;
+    height: 50vh;
+    position: relative;
+
+}
+
+.widget-box{
+    background-color: white;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: black;
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    bottom: 8px;
+
 }
