@@ -1,3 +1,5 @@
+import config.js
+
 const test_widget = document.getElementById('test_widget');
 
 
