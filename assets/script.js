@@ -101,39 +101,38 @@ fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
     //Move the decimal 
     total_rev = total_rev / 100
     console.log("(Teachable) Total Revenue TD: "+ total_rev)
-    return total_rev
+
+    const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
+    const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
+
+    //? get monthly rev
+    fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&end=' + endDate, options)
+      .then(function (response){
+        return response.json();
+      })
+      .then(function (data){
+        var monthly_rev = 0;
+        for (var i in data['transactions']){
+            monthly_rev += data['transactions'][i].revenue
+        }
+        
+        //Move the decimal 
+        monthly_rev = monthly_rev / 100
+        console.log("(Teachable) Monthly Revenue: " + monthly_rev)
+
+
+        const teachWidget = document.createElement("div");
+        teachWidget.setAttribute("class", "widget");
+        teachWidget.innerHTML = '<h1>Teachable</h1>' + 
+        '<div>Monthly Revenue: '+ monthly_rev + '</div>' +
+        '<div>Total Revenue TD: '+ total_rev + '</div>' + 
+        '<br/>'
+
+        test_widget.appendChild(teachWidget)
+  })
 })
 
-const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
-const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
 
-//? get monthly rev
-fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&end=' + endDate, options)
-  .then(function (response){
-    return response.json();
-  })
-  .then(function (data){
-    var monthly_rev = 0;
-    for (var i in data['transactions']){
-        monthly_rev += data['transactions'][i].revenue
-    }
-    
-    //Move the decimal 
-    monthly_rev = monthly_rev / 100
-    console.log("(Teachable) Monthly Revenue: " + monthly_rev)
-
-
-    const teachWidget = document.createElement("div");
-    teachWidget.setAttribute("class", "widget");
-    teachWidget.innerHTML = '<h1>Teachable</h1>' + 
-    '<div>Monthly Revenue: '+ monthly_rev + '</div>' +
-    '<div>Total Revenue TD: '+ total_rev + '</div>' + 
-    '<br/>'
-
-    test_widget.appendChild(teachWidget)
-
-
-  })
 
 
 
