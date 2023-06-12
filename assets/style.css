@@ -60,6 +60,30 @@ body{
 
 .goal-input-container{
     width:100%;
+    display: grid;
+}
+
+.container{
+    display: inline-block;
+}
+
+#button-container{
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 10px;
+    
+    
+}
+
+button:hover{
+    background-color: rgb(110, 110, 235)
+}
+
+button.active{
+    background-color: rgb(37, 69, 253);
+    
 }
 
 .user-goal-input{
