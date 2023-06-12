@@ -1,6 +1,7 @@
-import config.js
-
 const test_widget = document.getElementById('test_widget');
+const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
+const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
+const currentMonth = dayjs().month();
 
 
 /* SUDO CODE FOR LOCAL STORAGE 
@@ -104,9 +105,6 @@ fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
     total_rev = total_rev / 100
     console.log("(Teachable) Total Revenue TD: "+ total_rev)
 
-    const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
-    const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
-
     //? get monthly rev
     fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&end=' + endDate, options)
       .then(function (response){
@@ -126,18 +124,13 @@ fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
         const teachWidget = document.createElement("div");
         teachWidget.setAttribute("class", "widget");
         teachWidget.innerHTML = '<h1>Teachable</h1>' + 
-        '<div>Monthly Revenue: '+ monthly_rev + '</div>' +
-        '<div>Total Revenue TD: '+ total_rev + '</div>' + 
+        '<div>Monthly Revenue: $'+ monthly_rev + '</div>' +
+        '<div>Total Revenue TD: $'+ total_rev + '</div>' + 
         '<br/>'
 
         test_widget.appendChild(teachWidget)
   })
 })
-
-
-
-
-
 
 
 //! Kajabi
@@ -154,6 +147,41 @@ fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
 //! Wix
 //! Squarespace
 //! Amazon
+//! REVERB
+const reverb_api = 'https://api.reverb.com/api/my/payments/selling'
+
+
+fetch(reverb_api, {
+    method: 'GET',
+    headers: {
+        'Authorization': 'Bearer 6bface44d1572b16cdd61888bb393cff99142a84dc746d1a01934fd11aefea09'
+    }
+}).then(function(response){
+    return response.json();
+}).then(function(data){
+    console.log(data);
+    var total_rev = 0;
+    var monthly_rev = 0;
+    for (var i in data.payments) {
+        var payment = data.payments[i].amount_item.amount_cents / 100
+        total_rev += payment
+        var date = data.payments[i].received_at
+        var month = dayjs(date).month()
+        if (month === currentMonth) {
+          console.log(payment)
+          monthly_rev += payment
+        }
+    }
+    const teachWidget = document.createElement("div");
+    teachWidget.setAttribute("class", "widget");
+    teachWidget.innerHTML = '<h1>Reverb</h1>' + 
+    '<div>Monthly Revenue: $'+ monthly_rev + '</div>' +
+    '<div>Total Revenue TD: $'+ total_rev + '</div>' + 
+    '<br/>'
+    test_widget.appendChild(teachWidget)
+
+    
+})
 
 //*** Merch Widgets ****/
 //! T-Spring
