@@ -6,7 +6,9 @@
 
 
 body{
-    background-color: rgb(190, 188, 187)
+    background-color: rgb(190, 188, 187);
+    height: 100vh;
+    color: black;
 }
 
 main {
@@ -69,20 +71,39 @@ main {
 
 .options-container{
     display: flex;
-    flex-direction: column;
-    width: 150px;
-    margin: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
 
+.category{
+    background-color: red;
+    padding: 15px;
+    border-radius:20px;
+    width:100%;
+    
 }
 
 #button-container{
-    display:flex;
+    display:inline-block;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     padding-top: 10px;
-    
-    
+    background-color: aliceblue;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding:0px;
+    margin: 5px;
+
+}
+
+.button-group{
+    display:flex;
+    flex-direction: column;
+    width: 95%;
 }
 
 button:hover{
@@ -107,13 +128,6 @@ button.active{
     line-height: 39px;
 }
 
-.widget-contianer{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    margin: 1rem;
-
-}
 
 .widget{
     background-color: white;
@@ -132,4 +146,29 @@ button.active{
     display: flex;
     gap: 1rem;
     flex-direction: row;
+}
+
+.submit-container{
+    justify-content: center;
+    text-align: center;
+}
+
+.submit{
+    justify-content: center;
+    background-color: #ddd;
+    border: solid;
+    border-color: aliceblue;
+    color: rgb(31, 31, 31);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 1px 2px 5px 1px;
+}
+
+.hide{
+    display: none;
 }
