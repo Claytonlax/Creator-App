@@ -6,7 +6,8 @@
 
 
 body{
-    background-color: rgb(190, 188, 187)
+    background-color: rgb(190, 188, 187);
+    height: 100vh;
 }
 
 main {
@@ -69,20 +70,38 @@ main {
 
 .options-container{
     display: flex;
-    flex-direction: column;
-    width: 150px;
-    margin: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 
+.category{
+    background-color: red;
+    padding: 15px;
+    border-radius:15px;
+    width:100%;
+    
 }
 
 #button-container{
-    display:flex;
+    display:inline-block;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     padding-top: 10px;
-    
-    
+    background-color: aliceblue;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding:0px;
+    margin: 5px;
+    max-width: 300px;
+    min-width: 260px;
+    height: 450px;
+}
+
+.button-group{
+    display:flex;
+    flex-direction: column;
 }
 
 button:hover{
@@ -132,4 +151,29 @@ button.active{
     display: flex;
     gap: 1rem;
     flex-direction: row;
+}
+
+.submit-container{
+    justify-content: center;
+    text-align: center;
+}
+
+.submit{
+    justify-content: center;
+    background-color: #ddd;
+    border: solid;
+    border-color: aliceblue;
+    color: rgb(31, 31, 31);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    box-shadow: 1px 2px 5px 1px;
+}
+
+.hide{
+    display: none;
 }

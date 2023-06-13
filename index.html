@@ -11,12 +11,13 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
     <div>
       <div class = "title-container">
-        <h1 >Influencers Unlimited</h1>
+        <h1 class = "title is-1 is-underlined" >Influencers Unlimited</h1>
       </div>
     </div>
     <div class="enter-username-container">
@@ -27,8 +28,9 @@
       </div>
     <main>
       <div class="options-container">
-        <div id = "button-container">
+        <div class = "column" id = "button-container">
           <h2 class="category">Social Platforms</h2>
+          <div class= "button-group">
           <button class="platforms">Youtube</button>
           <button class="platforms">Instagram</button>
           <button class="platforms">Snapchat</button>
@@ -37,42 +39,51 @@
           <button class="platforms">Twitch</button>
           <button class="platforms">Patreon</button>
         </div>
-        <div id="button-container">
+      </div>
+      <div class = "column" id="button-container">
           <h2 class="category">Music Platforms</h2>
+          <div class= "button-group">
           <button class="platforms">Spotify</button>
           <button class="platforms">Apple Music</button>
+          </div>
         </div>
-        <div id = "button-container">
+        <div class = "column" id = "button-container">
           <h2 class="category">Education Platforms</h2>
+          <div class= "button-group">
           <button class="platforms">Skillshare</button>
           <button class="platforms">Teachable</button>
           <button class="platforms">Kajabi</button>
           <button class="platforms">Udemy</button>
           <button class="platforms">Thinkific</button>
+          </div>
         </div>
-        <div id = "button-container">
+        <div class = "column" id = "button-container">
           <h2 class="category">Ecommerce Platforms</h2>
+          <div class= "button-group">
           <button class="platforms">Shopify</button>
           <button class="platforms">Wix</button>
           <button class="platforms">Squarespace</button>
           <button class="platforms">Amazon</button>
           <button class="platforms">Etsy</button>
+          </div>
         </div>
-        <div id = "button-container">
+        <div class = "column" id = "button-container">
           <h2 class="category">Merchandise Platforms</h2>
+          <div class= "button-group">
           <button class="platforms">T-Spring</button>
           <button class="platforms">Threads</button>
           <button class="platforms">UberPrints</button>
           <button class="platforms">Captiv8</button>
           <button class="platforms">Vista Print</button>
           <button class="platforms">Awesome Merch</button>
+          </div>
         </div>
       </div>
-      <div class="widget-container">
+      <div class="widget-container hide ">
         <div id="test_widget"></div>
       </div>
     </main>
-    <div>
+    <div class="submit-container">
       <button class="submit">Submit</button>
     </div>
 
