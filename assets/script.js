@@ -2,6 +2,7 @@ const test_widget = document.getElementById('test_widget');
 const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
 const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
 const currentMonth = dayjs().month();
+const bottons = document.getElementByClass('platforms');
 
 
 /* SUDO CODE FOR LOCAL STORAGE 
@@ -27,6 +28,9 @@ var dataStructure: [
 */
 
 //*** Social Widgets ****/
+
+
+
 
 //! YouTube ////////////////////////
 const YouTubeAPIKey = 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU'; 

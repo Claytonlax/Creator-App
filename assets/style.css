@@ -8,6 +8,7 @@
 body{
     background-color: rgb(190, 188, 187);
     height: 100vh;
+    color: black;
 }
 
 main {
@@ -72,12 +73,14 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
 }
 
 .category{
     background-color: red;
     padding: 15px;
-    border-radius:15px;
+    border-radius:20px;
     width:100%;
     
 }
@@ -94,14 +97,13 @@ main {
     border-radius: 20px;
     padding:0px;
     margin: 5px;
-    max-width: 300px;
-    min-width: 260px;
-    height: 450px;
+
 }
 
 .button-group{
     display:flex;
     flex-direction: column;
+    width: 95%;
 }
 
 button:hover{
@@ -126,13 +128,6 @@ button.active{
     line-height: 39px;
 }
 
-.widget-contianer{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    margin: 1rem;
-
-}
 
 .widget{
     background-color: white;
