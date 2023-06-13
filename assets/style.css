@@ -9,6 +9,10 @@ body{
     background-color: rgb(190, 188, 187)
 }
 
+main {
+    display: flex;
+}
+
 .enter-username-container{
     display:flex;
     justify-content: center;
@@ -63,8 +67,12 @@ body{
     display: grid;
 }
 
-.container{
-    display: inline-block;
+.options-container{
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 1rem;
+
 }
 
 #button-container{
@@ -100,21 +108,28 @@ button.active{
 }
 
 .widget-contianer{
-    display:flex;
-    width: 100vw;
-    height: 50vh;
-    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    margin: 1rem;
 
 }
 
-.widget-box{
+.widget{
     background-color: white;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
     width: 250px;
     height: 250px;
-    position: absolute;
     bottom: 8px;
+    padding: .5rem;
+}
 
+#test_widget {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
 }
