@@ -14,6 +14,24 @@ var youtube_channel_name;
 //* Options Buttons
 const youtube_btn = document.getElementById('youtube')
 
+//* Data Structure for local storage
+var dataStructure = {
+  youtube: {
+    widget_name: 'youtubeWidget',
+    apiKey: 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU',
+    channelName: 'film_friends',
+    channelId: '',
+  },
+  teachable: {
+    widget_name: 'teachableWidget',
+    apiKey: 'B0RD3UreiCuqORd5bau5CKx3MC0s4pTN'
+  },
+  reverb:{
+    widget_name: 'reverbWidget',
+    apiKey: '6bface44d1572b16cdd61888bb393cff99142a84dc746d1a01934fd11aefea09'
+  }
+}
+
 //! Local Storage
 
 api_storage = getStorage();
@@ -26,7 +44,7 @@ function getStorage(){
   if (api_storage) {
     api_storage = JSON.parse(api_storage);
   } else {
-    api_storage = [];
+    api_storage = dataStructure;
     options_container.removeAttribute("class", "hide")
   }
   return api_storage;
@@ -52,16 +70,20 @@ youtube_btn.addEventListener("click", function(){
 
     // Get the input value
     var channelInput = document.getElementById('channel_input');
-    youtube_channel_name = channelInput.value;
+    api_storage.youtube.channelName = channelInput.value;
 
     // Do something with the channelName value
-    console.log('Channel Name:', youtube_channel_name);
+    console.log('Channel Name:', api_storage.youtube.channelName);
+    createYoutubeWidget();
+    setStorage(api_storage);
 
 
     // Close the modal if needed
     user_input_modal.classList.remove('is-active');
   });
+  whatisName();
 })
+
 
 
 
@@ -77,18 +99,8 @@ options_btn.addEventListener("click", function(){
 
 
 
-/* SUDO CODE FOR LOCAL STORAGE 
 
-var dataStructure: [
-  {
-    widget_name: '',
-    widget_color: '',
-    stat1: '',
-    stat2: '',
-    stat3: '',
-  },
-]
-
+/*
 - if NO local storage, start out on the "Add Widget" page
 
 - check local storage 
@@ -101,37 +113,29 @@ var dataStructure: [
 
 //*** Social Widgets ****/
 
-
-
-
 //! YouTube ////////////////////////
-const YouTubeAPIKey = 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU'; 
-var channelId;
-var YouTubeNameSearch = 'https://www.googleapis.com/youtube/v3/search?part=id&type=channel&q=' + youtube_channel_name + '&key=' + YouTubeAPIKey;
-var YouTubeData = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + channelId + '&key=' + YouTubeAPIKey;
+function createYoutubeWidget() {
+  var YouTubeNameSearch = 'https://www.googleapis.com/youtube/v3/search?part=id&type=channel&q=' + api_storage.youtube.channelName + '&key=' + api_storage.youtube.apiKey;
 
+  //? convert name to channelID
+  fetch(YouTubeNameSearch)
+      .then(function (response) {
+          return response.json();
+      })
+      .then(function (data){
+      api_storage.youtube.channelId = data.items[0].id.channelId;
 
-//? convert name to channelID
-fetch(YouTubeNameSearch)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data){
-        console.log(data)
-        channelId = data.items[0].id.channelId;
-        console.log(channelId)
-
-    //? get title, sub count, video count, view count.
-    fetch(YouTubeData)
-        .then(function (response) {
+      var YouTubeData = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + api_storage.youtube.channelId + '&key=' + api_storage.youtube.apiKey;
+      //? get title, sub count, video count, view count.
+      fetch(YouTubeData)
+          .then(function (response) {
             return response.json();
-        })
-        .then(function (data){
+          })
+          .then(function (data){
             var channelName = data.items[0].snippet.title
             var subscriberCount = data.items[0].statistics.subscriberCount
             var videoCount = data.items[0].statistics.videoCount
             var viewCount = data.items[0].statistics.viewCount
-
 
             const ytWidget = document.createElement("div");
             ytWidget.setAttribute("class", "widget");
@@ -141,11 +145,11 @@ fetch(YouTubeNameSearch)
             '<div>Video Count: '+ videoCount + '</div>' + 
             '<div>View Count: '+ viewCount + '</div>' +
             '<br/>'
-
             test_widget.appendChild(ytWidget)
-    })
+      })
+  })
+}
 
-})
 
 
 
@@ -197,7 +201,7 @@ fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
         monthly_rev = monthly_rev / 100
         console.log("(Teachable) Monthly Revenue: " + monthly_rev)
 
-
+        //? Generate Teachable Widget
         const teachWidget = document.createElement("div");
         teachWidget.setAttribute("class", "widget");
         teachWidget.innerHTML = '<h1>Teachable</h1>' + 
@@ -236,7 +240,6 @@ fetch(reverb_api, {
 }).then(function(response){
     return response.json();
 }).then(function(data){
-    console.log(data);
     var total_rev = 0;
     var monthly_rev = 0;
     for (var i in data.payments) {
@@ -245,7 +248,6 @@ fetch(reverb_api, {
         var date = data.payments[i].received_at
         var month = dayjs(date).month()
         if (month === currentMonth) {
-          console.log(payment)
           monthly_rev += payment
         }
     }
