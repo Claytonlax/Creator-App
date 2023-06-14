@@ -6,10 +6,14 @@ const options_btn = document.getElementById('options_btn');
 const submit = document.getElementById('submit');
 const options_container = document.getElementById('options_container')
 
+//* Options Buttons
+
+
+
+
 submit.addEventListener("click", function(){
   options_container.classList.add("hide")
 })
-
 
 
 options_btn.addEventListener("click", function(){
