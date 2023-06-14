@@ -5,20 +5,14 @@ const currentMonth = dayjs().month();
 const options_btn = document.getElementById('options_btn');
 const submit = document.getElementById('submit');
 const options_container = document.getElementById('options_container')
+const user_input_modal = document.getElementById('user_input')
+const modal_content = document.getElementById('modal-content')
+
+//* GLOBALS
+var youtube_channel_name;
 
 //* Options Buttons
-
-
-
-
-submit.addEventListener("click", function(){
-  options_container.classList.add("hide")
-})
-
-
-options_btn.addEventListener("click", function(){
-  options_container.removeAttribute("class", "hide")
-})
+const youtube_btn = document.getElementById('youtube')
 
 //! Local Storage
 
@@ -41,6 +35,47 @@ function getStorage(){
 function setStorage(api_storage) {
   localStorage.setItem('api_storage', JSON.stringify(api_storage));
 }
+
+//* Options Listeners
+youtube_btn.addEventListener("click", function(){
+  user_input_modal.classList.add('is-active');
+  modal_content.innerHTML = '<form id="youtube_form">' +
+  '<label>Channel Name</label>' +
+  '<input id="channel_input" placeholder="Mr Beast">' +
+  '</input><button type="submit">Submit</button>' +
+  '</form>';
+
+  // Add form submission listener
+  var youtubeForm = document.getElementById('youtube_form');
+  youtubeForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission from refreshing the page
+
+    // Get the input value
+    var channelInput = document.getElementById('channel_input');
+    youtube_channel_name = channelInput.value;
+
+    // Do something with the channelName value
+    console.log('Channel Name:', youtube_channel_name);
+
+
+    // Close the modal if needed
+    user_input_modal.classList.remove('is-active');
+  });
+})
+
+
+
+
+submit.addEventListener("click", function(){
+  options_container.classList.add("hide")
+})
+
+
+options_btn.addEventListener("click", function(){
+  options_container.removeAttribute("class", "hide")
+})
+
+
 
 /* SUDO CODE FOR LOCAL STORAGE 
 
@@ -71,12 +106,11 @@ var dataStructure: [
 
 //! YouTube ////////////////////////
 const YouTubeAPIKey = 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU'; 
-const channelName = 'film_friends'
-var channelId = 'UCgeSDwPH-6ttgxdPANBjQPQ';
-var YouTubeNameSearch = 'https://www.googleapis.com/youtube/v3/search?part=id&type=channel&q=' + channelName + '&key=' + YouTubeAPIKey;
+var channelId;
+var YouTubeNameSearch = 'https://www.googleapis.com/youtube/v3/search?part=id&type=channel&q=' + youtube_channel_name + '&key=' + YouTubeAPIKey;
 var YouTubeData = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + channelId + '&key=' + YouTubeAPIKey;
 
-/*
+
 //? convert name to channelID
 fetch(YouTubeNameSearch)
     .then(function (response) {
@@ -86,33 +120,35 @@ fetch(YouTubeNameSearch)
         console.log(data)
         channelId = data.items[0].id.channelId;
         console.log(channelId)
+
+    //? get title, sub count, video count, view count.
+    fetch(YouTubeData)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data){
+            var channelName = data.items[0].snippet.title
+            var subscriberCount = data.items[0].statistics.subscriberCount
+            var videoCount = data.items[0].statistics.videoCount
+            var viewCount = data.items[0].statistics.viewCount
+
+
+            const ytWidget = document.createElement("div");
+            ytWidget.setAttribute("class", "widget");
+            ytWidget.innerHTML = '<h1>YouTube</h1>' + 
+            '<div>Channel Name: ' + channelName + '</div>' +
+            '<div>Subscriber Count: '+ subscriberCount + '</div>' +
+            '<div>Video Count: '+ videoCount + '</div>' + 
+            '<div>View Count: '+ viewCount + '</div>' +
+            '<br/>'
+
+            test_widget.appendChild(ytWidget)
     })
 
-*/
-
-//? get title, sub count, video count, view count.
-fetch(YouTubeData)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data){
-        var channelName = data.items[0].snippet.title
-        var subscriberCount = data.items[0].statistics.subscriberCount
-        var videoCount = data.items[0].statistics.videoCount
-        var viewCount = data.items[0].statistics.viewCount
+})
 
 
-        const ytWidget = document.createElement("div");
-        ytWidget.setAttribute("class", "widget");
-        ytWidget.innerHTML = '<h1>YouTube</h1>' + 
-        '<div>Channel Name: ' + channelName + '</div>' +
-        '<div>Subscriber Count: '+ subscriberCount + '</div>' +
-        '<div>Video Count: '+ videoCount + '</div>' + 
-        '<div>View Count: '+ viewCount + '</div>' +
-        '<br/>'
 
-        test_widget.appendChild(ytWidget)
-    })
 
 //! Meta (FB and IG)
 //! TikTok 
