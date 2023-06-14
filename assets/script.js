@@ -222,10 +222,6 @@ function hideOptions(){
   options_container.classList.add('hide')
 };
 
-submit.addEventListener("click", function(){
-  hideOptions();
-});
-
 
 options_btn.addEventListener("click", function(){
   showOptions();
