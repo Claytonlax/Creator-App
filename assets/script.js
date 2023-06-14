@@ -7,6 +7,8 @@ const submit = document.getElementById('submit');
 const options_container = document.getElementById('options_container');
 const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
+const placeholder_button = document.getElementById('soon')
+
 
 //* GLOBALS
 var api_storage;
@@ -37,7 +39,7 @@ var dataStructure = {
 var placeholderDataStructure = {
   youtube: {
     widget_name: 'youtubeWidget',
-    apiKey: '',
+    apiKey: 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU',
     channelName: '',
     channelId: '',
   },
@@ -65,15 +67,15 @@ function checkStorage(){
   console.log("checking storage...")
   if (api_storage.youtube.channelName !== ''){
     console.log("Youtube credentials found!")
-    //createYoutubeWidget();
+    createYoutubeWidget();
   }
   if (api_storage.teachable.apiKey !== ''){
     console.log("Teachable credentials found!")
-    //createTeachableWidget();
+    createTeachableWidget();
   }
   if (api_storage.reverb.apiKey !== ''){
     console.log("Reverb credentials found!")
-    //createReverbWidget();
+    createReverbWidget();
   }
 }
 
@@ -86,6 +88,7 @@ function clearWidgets() {
 
 //* Local Storage functions
 function getStorage(){
+  clearWidgets();
   api_storage = localStorage.getItem('api_storage');
   if (api_storage) {
     api_storage = JSON.parse(api_storage);
@@ -200,6 +203,16 @@ reverb_btn.addEventListener("click", function(){
   });
 })
 
+placeholder_button.addEventListener("click", function(){
+  console.log("You made it to a placeholder")
+  user_input_modal.classList.add('is-active');
+  modal_content.innerHTML =
+  '<h1>COMING SOON</h1>' +
+  '<p>This Widget is unablaible at this time due to early development. We hope to have it active for you soon.</p>'
+
+  // Close the modal
+})
+
 
 
 
@@ -243,9 +256,10 @@ function createYoutubeWidget() {
   //? convert name to channelID
   fetch(YouTubeNameSearch)
       .then(function (response) {
-          return response.json();
+        return response.json();
       })
       .then(function (data){
+      console.log(data)
       api_storage.youtube.channelId = data.items[0].id.channelId;
 
       var YouTubeData = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + api_storage.youtube.channelId + '&key=' + api_storage.youtube.apiKey;
