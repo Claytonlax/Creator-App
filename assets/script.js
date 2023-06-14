@@ -222,9 +222,20 @@ function hideOptions(){
   options_container.classList.add('hide')
 };
 
+submit.addEventListener("click", function(){
+  hideOptions();
+});
+
 
 options_btn.addEventListener("click", function(){
-  showOptions();
+  if (options_container.classList.contains('hide')){
+    showOptions();
+    options_btn.textContent = "Hide More Widgets"
+  } else {
+    hideOptions()
+    options_btn.textContent = "Add More Widgets"
+  }
+
 });
 
 
