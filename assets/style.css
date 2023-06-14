@@ -6,7 +6,7 @@
 
 
 body{
-    background-color: rgb(190, 188, 187);
+    background-color:#39a0ca;
     height: 100vh;
     color: black;
 }
@@ -166,6 +166,14 @@ button.active{
     cursor: pointer;
     border-radius: 16px;
     box-shadow: 1px 2px 5px 1px;
+}
+
+.modal-content{
+    border-radius: 16px;
+    color:white;
+    background-color: rgb(28, 93, 93);
+    padding: 2rem;
+
 }
 
 .hide{
