@@ -2,8 +2,41 @@ const test_widget = document.getElementById('test_widget');
 const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
 const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
 const currentMonth = dayjs().month();
-const bottons = document.getElementByClass('platforms');
+const options_btn = document.getElementById('options_btn');
+const submit = document.getElementById('submit');
+const options_container = document.getElementById('options_container')
 
+submit.addEventListener("click", function(){
+  options_container.classList.add("hide")
+})
+
+
+
+options_btn.addEventListener("click", function(){
+  options_container.removeAttribute("class", "hide")
+})
+
+//! Local Storage
+
+api_storage = getStorage();
+setStorage(api_storage);
+console.log(api_storage);
+
+
+function getStorage(){
+  var api_storage = localStorage.getItem('api_storage');
+  if (api_storage) {
+    api_storage = JSON.parse(api_storage);
+  } else {
+    api_storage = [];
+    options_container.removeAttribute("class", "hide")
+  }
+  return api_storage;
+}
+
+function setStorage(api_storage) {
+  localStorage.setItem('api_storage', JSON.stringify(api_storage));
+}
 
 /* SUDO CODE FOR LOCAL STORAGE 
 
