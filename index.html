@@ -19,7 +19,7 @@
   <body>
     <div>
       <div class = "title-container">
-        <h1 class = "title is-1 is-underlined" >Influencers Unlimited</h1>
+        <h1 class = "title is-1 is-underlined" style = "color: #1d1e22;" >Influencers Unlimited</h1>
       </div>
     </div>
     
@@ -29,6 +29,7 @@
           <div id="enter-username">
             <h2>Welcome!</h2> 
             <input placeholder="Enter Name Here">
+            <button id="enter" class="enter_btn">Enter</button>
           </div>
         </div>
       <main>
@@ -37,50 +38,50 @@
             <h2 class="category">Social Platforms</h2>
             <div class= "button-group">
             <button id="youtube" class="platforms">Youtube</button>
-            <button class="platforms">Instagram</button>
-            <button class="platforms">Snapchat</button>
-            <button class="platforms">TikTok</button>
-            <button class="platforms">Twitter</button>
-            <button class="platforms">Twitch</button>
-            <button class="platforms">Patreon</button>
+            <button id="instagrm" class="platforms">Instagram</button>
+            <button id="snapchat" class="platforms">Snapchat</button>
+            <button id="tiktok" class="platforms">TikTok</button>
+            <button id="twitter" class="platforms">Twitter</button>
+            <button id="twitch" class="platforms">Twitch</button>
+            <button id="patreon" class="platforms">Patreon</button>
           </div>
         </div>
         <div class = "column" id="button-container">
             <h2 class="category">Music Platforms</h2>
             <div class= "button-group">
-            <button class="platforms">Spotify</button>
-            <button class="platforms">Apple Music</button>
+            <button id="spotify" class="platforms">Spotify</button>
+            <button id="apple_music" class="platforms">Apple Music</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Education Platforms</h2>
             <div class= "button-group">
-            <button class="platforms">Skillshare</button>
-            <button class="platforms">Teachable</button>
-            <button class="platforms">Kajabi</button>
-            <button class="platforms">Udemy</button>
-            <button class="platforms">Thinkific</button>
+            <button id="skillshare" class="platforms">Skillshare</button>
+            <button id="teachable" class="platforms">Teachable</button>
+            <button id="kajabi" class="platforms">Kajabi</button>
+            <button id="udemy" class="platforms">Udemy</button>
+            <button id="thinkific" class="platforms">Thinkific</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Ecommerce Platforms</h2>
             <div class= "button-group">
-            <button class="platforms">Shopify</button>
-            <button class="platforms">Wix</button>
-            <button class="platforms">Squarespace</button>
-            <button class="platforms">Amazon</button>
-            <button class="platforms">Etsy</button>
+            <button id="shopify" class="platforms">Shopify</button>
+            <button id="wix" class="platforms">Wix</button>
+            <button id="squarespace" class="platforms">Squarespace</button>
+            <button id="amazon" class="platforms">Amazon</button>
+            <button id="etsy" class="platforms">Etsy</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Merchandise Platforms</h2>
             <div class= "button-group">
-            <button class="platforms">T-Spring</button>
-            <button class="platforms">Threads</button>
-            <button class="platforms">UberPrints</button>
-            <button class="platforms">Captiv8</button>
-            <button class="platforms">Vista Print</button>
-            <button class="platforms">Awesome Merch</button>
+            <button id="t-spring" class="platforms">T-Spring</button>
+            <button id="threads" class="platforms">Threads</button>
+            <button id="uberprints" class="platforms">UberPrints</button>
+            <button id="captiv8" class="platforms">Captiv8</button>
+            <button id="vista_print" class="platforms">Vista Print</button>
+            <button id="awesome_merch" class="platforms">Awesome Merch</button>
             </div>
           </div>
         </div>
@@ -91,7 +92,7 @@
 
       <div id="user_input" class="modal">
         <div class="modal-background"></div>
-        <div id="modal-content" class="modal-content" style="color:white; background-color: rgb(28, 93, 93); padding: 2rem;">
+        <div id="modal-content" class="modal-content" >
         </div>
         <button class="modal-close is-large" aria-label="close"></button>
       </div>
@@ -100,6 +101,7 @@
     
 
     <button id="options_btn">Add More Widgets</button>
+    
     <div class="goal-input-container"></div>
     <div class="goal-input-text"></div>
     <div class="widget-container">

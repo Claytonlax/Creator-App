@@ -6,7 +6,7 @@
 
 
 body{
-    background-color: rgb(190, 188, 187);
+    background-color:#39a0ca;
     height: 100vh;
     color: black;
 }
@@ -22,6 +22,27 @@ main {
     padding: 30px;
 }
 
+.enter_btn{
+    justify-content: center;
+    background-color: #ddd;
+    border: solid;
+    border-color: aliceblue;
+    color: rgb(31, 31, 31);
+    font-weight: bolder;
+    padding-top: 0px;
+    padding-right: 4px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 1px 2px 5px 1px;
+
+}
+
 
 .title-container{
   display:flex;
@@ -29,6 +50,7 @@ main {
   align-items: center;
   padding: 5px;  
 }
+
 
 .platforms{
     background-color: #ddd;
@@ -46,11 +68,23 @@ main {
     
 }
 
+.platforms:hover{
+    background-color: rgb(110, 110, 235);
+}
+
+.platforms:active{
+    background-color: rgb(37, 69, 253);
+    
+}
+
+
 #title-container{
     display: flex;
     padding: 20px;
     width:50%;
 }
+
+
 #title{
     width: 672px;
     height: 77px;
@@ -96,23 +130,17 @@ main {
     border-radius: 20px;
     padding:0px;
     margin: 5px;
+    cursor: pointer;
 
 }
 
 .button-group{
-    display:flex;
+    display:inline-flex;
     flex-direction: column;
     width: 95%;
 }
 
-button:hover{
-    background-color: rgb(110, 110, 235)
-}
 
-button.active{
-    background-color: rgb(37, 69, 253);
-    
-}
 
 .user-goal-input{
     position: absolute;
@@ -129,6 +157,7 @@ button.active{
 
 
 .widget{
+    position: flex;
     background-color: white;
     border-radius: 20px;
     border-style: solid;
@@ -152,20 +181,51 @@ button.active{
     text-align: center;
 }
 
-.submit{
+#submit{
     justify-content: center;
     background-color: #ddd;
     border: solid;
     border-color: aliceblue;
     color: rgb(31, 31, 31);
-    padding: 10px 20px;
+    font-weight: bolder;
+    padding-top: 0px;
+    padding-right: 4px;
+    padding-bottom: 0px;
+    padding-left: 4px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     margin: 4px 2px;
     cursor: pointer;
-    border-radius: 16px;
+    border-radius: 8px;
     box-shadow: 1px 2px 5px 1px;
+}
+
+.modal-content{
+    border-radius: 16px;
+    color:white;
+    background-color: rgb(28, 93, 93);
+    padding: 2rem;
+
+}
+
+#options_btn {
+    cursor: pointer;
+    color: #393f4d;
+    font-weight: bolder;
+    background-color: #feda6a;
+    padding-top: 0px;
+    padding-right: 4px;
+    padding-bottom: 0px;
+    padding-left: 4px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 1px 2px 5px 1px;
+
 }
 
 .hide{
