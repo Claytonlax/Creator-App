@@ -7,7 +7,7 @@ const submit = document.getElementById('submit');
 const options_container = document.getElementById('options_container');
 const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
-const placeholder_button = document.getElementById('soon')
+const placeholder_button = document.querySelectorAll('.soon')
 
 
 //* GLOBALS
@@ -203,17 +203,15 @@ reverb_btn.addEventListener("click", function(){
   });
 })
 
-placeholder_button.addEventListener("click", function(){
-  console.log("You made it to a placeholder")
-  user_input_modal.classList.add('is-active');
-  modal_content.innerHTML =
-  '<h1>COMING SOON</h1>' +
-  '<p>This Widget is unablaible at this time due to early development. We hope to have it active for you soon.</p>'
-
-  // Close the modal
-})
-
-
+for (let i = 0; i < placeholder_button.length; i++){
+  placeholder_button[i].addEventListener("click", function(){
+    console.log("You made it to a placeholder")
+    user_input_modal.classList.add('is-active');
+    modal_content.innerHTML =
+    '<h1>COMING SOON</h1>' +
+    '<p>This Widget is unavailable at this time due to early development. We hope to have it active for you soon.</p>'
+  })
+}
 
 
 function showOptions(){
@@ -232,6 +230,8 @@ submit.addEventListener("click", function(){
 options_btn.addEventListener("click", function(){
   showOptions();
 });
+
+
 
 
 
