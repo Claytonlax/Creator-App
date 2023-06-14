@@ -9,7 +9,7 @@ const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
 
 //* GLOBALS
-
+var api_storage;
 
 //* Options Buttons
 const youtube_btn = document.getElementById('youtube');
@@ -51,18 +51,47 @@ var placeholderDataStructure = {
   }
 }
 
-//! Local Storage
+//* App Startup
 
-api_storage = getStorage();
-setStorage(api_storage);
-console.log(api_storage);
+function main(){
+  api_storage = getStorage();
+  setStorage(api_storage);
+  console.log(api_storage);
+}
+
+//check storage for widgets. if they are there. make the widget
+function checkStorage(){
+  clearWidgets();
+  console.log("checking storage...")
+  if (api_storage.youtube.channelName !== ''){
+    console.log("Youtube credentials found!")
+    //createYoutubeWidget();
+  }
+  if (api_storage.teachable.apiKey !== ''){
+    console.log("Teachable credentials found!")
+    //createTeachableWidget();
+  }
+  if (api_storage.reverb.apiKey !== ''){
+    console.log("Reverb credentials found!")
+    //createReverbWidget();
+  }
+}
 
 
+function clearWidgets() {
+  test_widget.innerHTML = ''; // clears the widgets out
+}
+
+
+
+//* Local Storage functions
 function getStorage(){
-  var api_storage = localStorage.getItem('api_storage');
+  api_storage = localStorage.getItem('api_storage');
   if (api_storage) {
     api_storage = JSON.parse(api_storage);
+    checkStorage();
   } else {
+    console.log("No credentials Found")
     api_storage = placeholderDataStructure;
     options_container.removeAttribute("class", "hide")
   }
@@ -79,10 +108,13 @@ function setStorage(api_storage) {
 youtube_btn.addEventListener("click", function(){
   user_input_modal.classList.add('is-active');
   modal_content.innerHTML = '<form id="youtube_form">' +
+  '<h1>YouTube</h1>' +
+  '<p>Please provide your YouTube channel name.</p>' +
   '<label>Channel Name</label>' +
   '<input id="channel_input" placeholder="Mr.Beast"></input>' +
+  '<br/>' +
   '<button type="submit">Submit</button>' +
-  '</form>';
+  '</form>'
 
   // Add form submission listener to created elements
   var youtubeForm = document.getElementById('youtube_form');
@@ -108,8 +140,11 @@ youtube_btn.addEventListener("click", function(){
 teachable_btn.addEventListener("click", function(){
   user_input_modal.classList.add('is-active');
   modal_content.innerHTML = '<form id="teachable_form">' +
+  '<h1>Teachable</h1>' +
+  '<p>Please provide your unique Teachable api key.</p>' +
   '<label>Unique API key</label>' +
   '<input id="teachable_api_key" placeholder="74h29183hh48390204845ubBHHDhak"></input>' +
+  '<br/>' +
   '<button type="submit">Submit</button>' +
   '</form>';
 
@@ -137,8 +172,11 @@ teachable_btn.addEventListener("click", function(){
 reverb_btn.addEventListener("click", function(){
   user_input_modal.classList.add('is-active');
   modal_content.innerHTML = '<form id="reverb_form">' +
+  '<h1>Reverb</h1>' +
+  '<p>Please provide your unique Reverb api key.</p>' +
   '<label>Unique API key</label>' +
   '<input id="reverb_api_key" placeholder="74h29183hh48390204845ubBHHDhak"></input>' +
+  '<br/>' +
   '<button type="submit">Submit</button>' +
   '</form>';
 
@@ -359,3 +397,6 @@ function createReverbWidget(){
 //! Awesome Merch
 //! Captiv8
 
+
+
+main();
