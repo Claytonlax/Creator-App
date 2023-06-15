@@ -85,3 +85,4 @@ What if there was one place they could access their metrics, track and manage th
 
 Platforms like social blade[https://socialblade.com/youtube/c/1willcobb] and VidIQ [https://vidiq.com/] both leverage the YouTube API and parse comparisons. They also use key word searching with potentially the google search API. But they both are generally single platform and dont let you agigate multi platform or finances. 
 
+Add Jared Branch 
