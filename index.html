@@ -18,6 +18,9 @@
 
   <body>
     <div>
+      <button id="options_btn">Add More Widgets</button>
+      <button id="example_btn">Example Data</button><!-- switch out with example data structure-->
+      <button id="goals_btn">Set Goals</button>
       <div class = "title-container">
         <h1 class = "title is-1 is-underlined" style = "color: #1d1e22;" >Influencers Unlimited</h1>
       </div>
@@ -26,11 +29,19 @@
 
     <div id="options_container" class="hide">
         <div class="enter-username-container">
-          <div id="enter-username">
-            <h2>Welcome!</h2> 
-            <input placeholder="Enter Name Here">
-            <button id="enter" class="enter_btn">Enter</button>
-          </div>
+          <h2>Welcome!</h2> 
+          <form id="goals_form">
+            <label>User Name
+              <input id="user_name" placeholder="1willcobb"/>
+            </label>
+            <label>Monthly Revenue Goal
+              <input id="rev_goal" placeholder="10000"/>
+            </label>
+            <label>Monthly Influence
+              <input id="influence_goal" placeholder="2000"/>
+            </label>
+            <button id="enter" class="enter_btn">Save</button>
+          </form>
         </div>
       <main>
         <div class="options-container">
@@ -38,58 +49,60 @@
             <h2 class="category">Social Platforms</h2>
             <div class= "button-group">
             <button id="youtube" class="platforms">Youtube</button>
-            <button id="instagrm" class="platforms">Instagram</button>
-            <button id="snapchat" class="platforms">Snapchat</button>
-            <button id="tiktok" class="platforms">TikTok</button>
-            <button id="twitter" class="platforms">Twitter</button>
-            <button id="twitch" class="platforms">Twitch</button>
-            <button id="patreon" class="platforms">Patreon</button>
+            <button id="instagrm" class="platforms soon">Instagram</button>
+            <button id="snapchat" class="platforms soon">Snapchat</button>
+            <button id="tiktok" class="platforms soon">TikTok</button>
+            <button id="twitter" class="platforms soon">Twitter</button>
+            <button id="twitch" class="platforms soon">Twitch</button>
+            <button id="patreon" class="platforms soon">Patreon</button>
           </div>
         </div>
         <div class = "column" id="button-container">
             <h2 class="category">Music Platforms</h2>
             <div class= "button-group">
-            <button id="spotify" class="platforms">Spotify</button>
-            <button id="apple_music" class="platforms">Apple Music</button>
+            <button id="spotify" class="platforms soon">Spotify</button>
+            <button id="apple_music" class="platforms soon">Apple Music</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Education Platforms</h2>
             <div class= "button-group">
-            <button id="skillshare" class="platforms">Skillshare</button>
+            <button id="skillshare" class="platforms soon">Skillshare</button>
             <button id="teachable" class="platforms">Teachable</button>
-            <button id="kajabi" class="platforms">Kajabi</button>
-            <button id="udemy" class="platforms">Udemy</button>
-            <button id="thinkific" class="platforms">Thinkific</button>
+            <button id="kajabi" class="platforms soon">Kajabi</button>
+            <button id="udemy" class="platforms soon">Udemy</button>
+            <button id="thinkific" class="platforms soon">Thinkific</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Ecommerce Platforms</h2>
             <div class= "button-group">
-            <button id="shopify" class="platforms">Shopify</button>
-            <button id="wix" class="platforms">Wix</button>
-            <button id="squarespace" class="platforms">Squarespace</button>
-            <button id="amazon" class="platforms">Amazon</button>
-            <button id="etsy" class="platforms">Etsy</button>
+            <button id="shopify" class="platforms soon">Shopify</button>
+            <button id="wix" class="platforms soon">Wix</button>
+            <button id="squarespace" class="platforms soon">Squarespace</button>
+            <button id="amazon" class="platforms soon">Amazon</button>
+            <button id="etsy" class="platforms soon">Etsy</button>
+            <button id="reverb" class="platforms">Reverb</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Merchandise Platforms</h2>
             <div class= "button-group">
-            <button id="t-spring" class="platforms">T-Spring</button>
-            <button id="threads" class="platforms">Threads</button>
-            <button id="uberprints" class="platforms">UberPrints</button>
-            <button id="captiv8" class="platforms">Captiv8</button>
-            <button id="vista_print" class="platforms">Vista Print</button>
-            <button id="awesome_merch" class="platforms">Awesome Merch</button>
+              <button id="t-spring" class="platforms soon">T-Spring</button>
+              <button id="threads" class="platforms soon">Threads</button>
+              <button id="uberprints" class="platforms soon">UberPrints</button>
+              <button id="captiv8" class="platforms soon">Captiv8</button>
+              <button id="vista_print" class="platforms soon">Vista Print</button>
+              <button id="awesome_merch" class="platforms soon">Awesome Merch</button>
             </div>
           </div>
         </div>
       </main>
       <div class="submit-container">
-        <button id="submit">Submit</button>
+        <button id="submit">Done</button>
       </div>
 
+      <!--? Modal -->
       <div id="user_input" class="modal">
         <div class="modal-background"></div>
         <div id="modal-content" class="modal-content" >
@@ -100,13 +113,28 @@
 
     
 
-    <button id="options_btn">Add More Widgets</button>
     
-    <div class="goal-input-container"></div>
-    <div class="goal-input-text"></div>
+    
+    <div id="goal_input_container">
+
+    </div>
     <div class="widget-container">
+      <div id="user_stats">
+        <div id="user_goals">
+          <div>User: <span id="user_name_storage"></span></div>
+          <div>Monthly Revenue Goal: $<span id="rev_goal_storage"></span></div>
+          <div>Monthly Influence Goal: $<span id="influence_goal_storage"></span></div>
+        </div>
+        <div id="user_charts">Chart
+          <div>Percent Towards Rev: <span id="percent_rev"></span></div>
+          <div>Percent Towards Influence: <span id="percent_inf"></span></div>
+        </div>
+      </div>
       <div class="widget-box"></div>
     </div>
+
+    
+    <!--? Widgets Load HERE-->
     <div class="widget-container">
       <div id="test_widget"></div>
     </div>
