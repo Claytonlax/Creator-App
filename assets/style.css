@@ -6,6 +6,8 @@
 
 
 body{
+    display: flex;
+    flex-direction: column;
     background-color:#39a0ca;
     height: 100vh;
     color: black;
@@ -15,8 +17,14 @@ main {
     display: flex;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 .enter-username-container{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;  
     padding: 30px;
@@ -140,7 +148,9 @@ main {
     width: 95%;
 }
 
-
+.widget-container{
+    display: flex;
+}
 
 .user-goal-input{
     position: absolute;
@@ -155,6 +165,23 @@ main {
     line-height: 39px;
 }
 
+#user_stats {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: aliceblue;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+#user_goals{
+    margin-right: auto;
+}
+
+#user_charts{
+    margin-left: auto;
+}
 
 .widget{
     position: flex;

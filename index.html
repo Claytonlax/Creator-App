@@ -19,6 +19,8 @@
   <body>
     <div>
       <button id="options_btn">Add More Widgets</button>
+      <button id="example_btn">Example Data</button><!-- switch out with example data structure-->
+      <button id="goals_btn">Set Goals</button>
       <div class = "title-container">
         <h1 class = "title is-1 is-underlined" style = "color: #1d1e22;" >Influencers Unlimited</h1>
       </div>
@@ -27,11 +29,19 @@
 
     <div id="options_container" class="hide">
         <div class="enter-username-container">
-          <div id="enter-username">
-            <h2>Welcome!</h2> 
-            <input placeholder="Enter Name Here">
-            <button id="enter" class="enter_btn">Enter</button>
-          </div>
+          <h2>Welcome!</h2> 
+          <form id="goals_form">
+            <label>User Name
+              <input id="user_name" placeholder="1willcobb"/>
+            </label>
+            <label>Monthly Revenue Goal
+              <input id="rev_goal" placeholder="10000"/>
+            </label>
+            <label>Monthly Influence
+              <input id="influence_goal" placeholder="2000"/>
+            </label>
+            <button id="enter" class="enter_btn">Save</button>
+          </form>
         </div>
       <main>
         <div class="options-container">
@@ -58,7 +68,7 @@
             <h2 class="category">Education Platforms</h2>
             <div class= "button-group">
             <button id="skillshare" class="platforms soon">Skillshare</button>
-            <button id="teachable" class="platforms soon">Teachable</button>
+            <button id="teachable" class="platforms">Teachable</button>
             <button id="kajabi" class="platforms soon">Kajabi</button>
             <button id="udemy" class="platforms soon">Udemy</button>
             <button id="thinkific" class="platforms soon">Thinkific</button>
@@ -105,9 +115,21 @@
 
     
     
-    <div class="goal-input-container"></div>
-    <div class="goal-input-text"></div>
+    <div id="goal_input_container">
+
+    </div>
     <div class="widget-container">
+      <div id="user_stats">
+        <div id="user_goals">
+          <div>User: <span id="user_name_storage"></span></div>
+          <div>Monthly Revenue Goal: $<span id="rev_goal_storage"></span></div>
+          <div>Monthly Influence Goal: $<span id="influence_goal_storage"></span></div>
+        </div>
+        <div id="user_charts">Chart
+          <div>Percent Towards Rev: <span id="percent_rev"></span></div>
+          <div>Percent Towards Influence: <span id="percent_inf"></span></div>
+        </div>
+      </div>
       <div class="widget-box"></div>
     </div>
 

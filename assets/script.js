@@ -1,3 +1,4 @@
+//* vars
 const test_widget = document.getElementById('test_widget');
 const startDate = dayjs().startOf('month').format('YYYY-MM-DD'); 
 const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
@@ -7,19 +8,42 @@ const submit = document.getElementById('submit');
 const options_container = document.getElementById('options_container');
 const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
-const placeholder_button = document.querySelectorAll('.soon')
 
+//* User Info
+const goals_form = document.getElementById('goals_form')
+const user_name = document.getElementById('user_name')
+const rev_goal = document.getElementById('rev_goal')
+const influence_goal = document.getElementById('influence_goal')
+
+//* User Output goals
+const user_name_storage = document.getElementById('user_name_storage')
+const rev_goal_storage = document.getElementById('rev_goal_storage')
+const influence_goal_storage = document.getElementById('influence_goal_storage')
+const percent_rev = document.getElementById('percent_rev')
+const percent_inf = document.getElementById('percent_inf')
+
+
+
+//* Goals
+const goal_input_container = document.getElementById('goal_input_container')
 
 //* GLOBALS
 var api_storage;
+var reverb_monthly_rev = 0;
 
 //* Options Buttons
 const youtube_btn = document.getElementById('youtube');
 const teachable_btn = document.getElementById('teachable');
 const reverb_btn = document.getElementById('reverb');
+const placeholder_button = document.querySelectorAll('.soon')
 
 //* Data Structure for local storage
 var dataStructure = {
+  user: {
+    name: 'Will',
+    monthly_rev: 20000,
+    monthly_influence: 10000
+  },
   youtube: {
     widget_name: 'youtubeWidget',
     apiKey: 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU',
@@ -37,6 +61,11 @@ var dataStructure = {
 }
 
 var placeholderDataStructure = {
+  user: {
+    name: '',
+    monthly_rev: 0,
+    monthly_influence: 0,
+  },
   youtube: {
     widget_name: 'youtubeWidget',
     apiKey: 'AIzaSyCuc2AbssrSaVUQ7-1RvIUgJLXgUpWq7cU',
@@ -63,6 +92,7 @@ function main(){
 
 //check storage for widgets. if they are there. make the widget
 function checkStorage(){
+  updateUserInfo()
   clearWidgets();
   console.log("checking storage...")
   if (api_storage.youtube.channelName !== ''){
@@ -85,7 +115,6 @@ function clearWidgets() {
 }
 
 
-
 //* Local Storage functions
 function getStorage(){
   clearWidgets();
@@ -95,7 +124,7 @@ function getStorage(){
     checkStorage();
   } else {
     console.log("No credentials Found")
-    api_storage = placeholderDataStructure;
+    api_storage = dataStructure;
     options_container.removeAttribute("class", "hide")
   }
   return api_storage;
@@ -203,6 +232,7 @@ reverb_btn.addEventListener("click", function(){
   });
 })
 
+//? Placeholders
 for (let i = 0; i < placeholder_button.length; i++){
   placeholder_button[i].addEventListener("click", function(){
     console.log("You made it to a placeholder")
@@ -211,6 +241,21 @@ for (let i = 0; i < placeholder_button.length; i++){
     '<h1>COMING SOON</h1>' +
     '<p>This Widget is unavailable at this time due to early development. We hope to have it active for you soon.</p>'
   })
+}
+
+//? User Data Listeners
+goals_form.addEventListener("submit", function(){
+  api_storage.user.name = user_name.value
+  api_storage.user.monthly_rev = rev_goal.value
+  api_storage.user.monthly_influence = influence_goal.value
+  setStorage(api_storage)
+  console.log(api_storage)
+})
+
+function updateUserInfo() {
+  user_name_storage.textContent = api_storage.user.name
+  rev_goal_storage.textContent = api_storage.user.monthly_rev
+  influence_goal_storage.textContent = api_storage.user.monthly_influence
 }
 
 
@@ -239,6 +284,13 @@ options_btn.addEventListener("click", function(){
 });
 
 
+//* Goal compared
+function getCompare () {
+  console.log(api_storage.user.monthly_rev)
+  console.log(reverb_monthly_rev)
+  var goal_rev =  ((reverb_monthly_rev) / api_storage.user.monthly_rev)
+  console.log("goal rev: " + goal_rev)
+}
 
 
 
@@ -387,25 +439,25 @@ function createReverbWidget(){
       return response.json();
   }).then(function(data){
       var total_rev = 0;
-      var monthly_rev = 0;
       for (var i in data.payments) {
           var payment = data.payments[i].amount_item.amount_cents / 100
           total_rev += payment
           var date = data.payments[i].received_at
           var month = dayjs(date).month()
           if (month === currentMonth) {
-            monthly_rev += payment
+            reverb_monthly_rev += payment
           }
       }
       //? Generate Reverb Widget 
       const teachWidget = document.createElement("div");
       teachWidget.setAttribute("class", "widget");
       teachWidget.innerHTML = '<h1>Reverb</h1>' + 
-      '<div>Monthly Revenue: $'+ monthly_rev + '</div>' +
+      '<div>Monthly Revenue: $'+ reverb_monthly_rev + '</div>' +
       '<div>Total Revenue TD: $'+ total_rev + '</div>' + 
       '<br/>'
       test_widget.appendChild(teachWidget)
 
+      
   })
 }
 
