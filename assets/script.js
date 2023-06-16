@@ -5,7 +5,7 @@ const endDate = dayjs().endOf('month').format('YYYY-MM-DD');
 const currentMonth = dayjs().month();
 const options_btn = document.getElementById('options_btn');
 const submit = document.getElementById('submit');
-const options_container = document.getElementById('options_container');
+const options_container = document.getElementById('options-container');
 const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
 
@@ -25,11 +25,14 @@ const percent_inf = document.getElementById('percent_inf')
 
 
 //* Goals
-const goal_input_container = document.getElementById('goal_input_container')
+const goals_container = document.getElementById('goals_container');
+const goals_btn = document.getElementById('goals_btn');
 
 //* GLOBALS
 var api_storage;
 var reverb_monthly_rev = 0;
+var teachable_monthly_rev = 0;
+var influence_number = 1000;
 
 //* Options Buttons
 const youtube_btn = document.getElementById('youtube');
@@ -38,11 +41,13 @@ const reverb_btn = document.getElementById('reverb');
 const placeholder_button = document.querySelectorAll('.soon')
 
 //* Data Structure for local storage
+const example_btn = document.getElementById('example_btn');
+
 var dataStructure = {
   user: {
     name: 'Will',
     monthly_rev: 20000,
-    monthly_influence: 10000
+    influence: 10000,
   },
   youtube: {
     widget_name: 'youtubeWidget',
@@ -64,7 +69,7 @@ var placeholderDataStructure = {
   user: {
     name: '',
     monthly_rev: 0,
-    monthly_influence: 0,
+    influence: 0,
   },
   youtube: {
     widget_name: 'youtubeWidget',
@@ -84,31 +89,45 @@ var placeholderDataStructure = {
 
 //* App Startup
 
+
+/**
+ * This is the main function
+ */
 function main(){
   api_storage = getStorage();
   setStorage(api_storage);
   console.log(api_storage);
 }
 
+
 //check storage for widgets. if they are there. make the widget
 function checkStorage(){
   updateUserInfo()
   clearWidgets();
+  var promises = [];
   console.log("checking storage...")
   if (api_storage.youtube.channelName !== ''){
     console.log("Youtube credentials found!")
-    createYoutubeWidget();
+    //var promise = createYoutubeWidget();
+    //promises.push(promise);
   }
   if (api_storage.teachable.apiKey !== ''){
     console.log("Teachable credentials found!")
-    createTeachableWidget();
+    var promise2 = createTeachableWidget();
+    promises.push(promise2)
   }
   if (api_storage.reverb.apiKey !== ''){
-    console.log("Reverb credentials found!")
+    var promise3 = console.log("Reverb credentials found!")
     createReverbWidget();
+    promises.push(promise3)
   }
+  Promise.all(promises).then(function(){
+    getCompare();
+  })
+    
+  
+  
 }
-
 
 function clearWidgets() {
   test_widget.innerHTML = ''; // clears the widgets out
@@ -124,8 +143,9 @@ function getStorage(){
     checkStorage();
   } else {
     console.log("No credentials Found")
-    api_storage = dataStructure;
-    options_container.removeAttribute("class", "hide")
+    api_storage = placeholderDataStructure;
+    showOptions();
+    showGoals();
   }
   return api_storage;
 }
@@ -255,16 +275,24 @@ goals_form.addEventListener("submit", function(){
 function updateUserInfo() {
   user_name_storage.textContent = api_storage.user.name
   rev_goal_storage.textContent = api_storage.user.monthly_rev
-  influence_goal_storage.textContent = api_storage.user.monthly_influence
+  influence_goal_storage.textContent = api_storage.user.influence
 }
 
 
+example_btn.addEventListener("click", function(){
+  localStorage.removeItem('api_storage')
+  api_storage = dataStructure;
+  console.log(api_storage)
+  setStorage(api_storage);
+  getStorage();
+})
+
 function showOptions(){
-  options_container.removeAttribute("class", "hide");
+  options_container.style.display = "flex";
 };
 
 function hideOptions(){
-  options_container.classList.add('hide')
+  options_container.style.display = "none";
 };
 
 submit.addEventListener("click", function(){
@@ -273,38 +301,49 @@ submit.addEventListener("click", function(){
 
 
 options_btn.addEventListener("click", function(){
-  if (options_container.classList.contains('hide')){
+  if (options_container.style.display === "none"){
     showOptions();
     options_btn.textContent = "Hide More Widgets"
   } else {
     hideOptions()
     options_btn.textContent = "Add More Widgets"
   }
+});
 
+/**
+ * Shows the goals container for inputting goals to achieve
+ */
+function showGoals(){
+  goals_container.style.display = "flex";
+}
+
+function hideGoals(){
+  goals_container.style.display = "none";
+}
+
+goals_btn.addEventListener("click", function(){
+  if (goals_container.style.display === "none"){
+    showGoals();
+    goals_btn.textContent = "Hide Goals"
+  } else {
+    hideGoals();
+    goals_btn.textContent = "Set Goals"
+  }
 });
 
 
 //* Goal compared
-function getCompare () {
+function getCompare() {
   console.log(api_storage.user.monthly_rev)
-  console.log(reverb_monthly_rev)
-  var goal_rev =  ((reverb_monthly_rev) / api_storage.user.monthly_rev)
+  var goal_rev =  (((reverb_monthly_rev + teachable_monthly_rev) / api_storage.user.monthly_rev)*100).toFixed(2)
+  var influence_comp = (influence_number / api_storage.user.influence)*100
   console.log("goal rev: " + goal_rev)
+  console.log("influencer: " + influence_comp)
+  percent_rev.textContent = goal_rev + '%'
+  percent_inf.textContent = influence_comp + '%'
 }
 
 
-
-
-/*
-- if NO local storage, start out on the "Add Widget" page
-
-- check local storage 
-- for each index, 
-  - Check the name, if the name matches a name of widgets, Fire that custom widget
-  - make a widget with title and 3 stats
-  - change color of the widget to match the color stated (use actual app reference)
-
-*/
 
 //*** Social Widgets ****/
 
@@ -313,7 +352,7 @@ function createYoutubeWidget() {
   var YouTubeNameSearch = 'https://www.googleapis.com/youtube/v3/search?part=id&type=channel&q=' + api_storage.youtube.channelName + '&key=' + api_storage.youtube.apiKey;
 
   //? convert name to channelID
-  fetch(YouTubeNameSearch)
+  return fetch(YouTubeNameSearch)
       .then(function (response) {
         return response.json();
       })
@@ -323,7 +362,7 @@ function createYoutubeWidget() {
 
       var YouTubeData = 'https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=' + api_storage.youtube.channelId + '&key=' + api_storage.youtube.apiKey;
       //? get title, sub count, video count, view count.
-      fetch(YouTubeData)
+      return fetch(YouTubeData)
           .then(function (response) {
             return response.json();
           })
@@ -332,6 +371,7 @@ function createYoutubeWidget() {
             var subscriberCount = data.items[0].statistics.subscriberCount
             var videoCount = data.items[0].statistics.videoCount
             var viewCount = data.items[0].statistics.viewCount
+            influence_number = subscriberCount;
 
             //? Generate Youtube Widget
             const ytWidget = document.createElement("div");
@@ -369,7 +409,7 @@ function createTeachableWidget() {
   var total_rev;
   
   //? get total rev
-  fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
+  return fetch('https://developers.teachable.com/v1/transactions?per=10000', options)
     .then(function (response){
       return response.json();
     })
@@ -384,7 +424,7 @@ function createTeachableWidget() {
       console.log("(Teachable) Total Revenue TD: "+ total_rev)
   
       //? get monthly rev
-      fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&end=' + endDate, options)
+      return fetch('https://developers.teachable.com/v1/transactions?start=' + startDate + '&end=' + endDate, options)
         .then(function (response){
           return response.json();
         })
@@ -392,11 +432,13 @@ function createTeachableWidget() {
           var monthly_rev = 0;
           for (var i in data['transactions']){
               monthly_rev += data['transactions'][i].revenue
+              
           }
           
           //Move the decimal 
           monthly_rev = monthly_rev / 100
           console.log("(Teachable) Monthly Revenue: " + monthly_rev)
+          teachable_monthly_rev = monthly_rev;
   
           //? Generate Teachable Widget
           const teachWidget = document.createElement("div");
@@ -410,7 +452,6 @@ function createTeachableWidget() {
     })
   })
 }
-
 
 //! Kajabi
 //! Skillshare
@@ -430,7 +471,7 @@ function createTeachableWidget() {
 function createReverbWidget(){
   const reverb_api = 'https://api.reverb.com/api/my/payments/selling'
 
-  fetch(reverb_api, {
+  return fetch(reverb_api, {
       method: 'GET',
       headers: {
           'Authorization': `Bearer ${api_storage.reverb.apiKey}`
@@ -446,6 +487,7 @@ function createReverbWidget(){
           var month = dayjs(date).month()
           if (month === currentMonth) {
             reverb_monthly_rev += payment
+            console.log("reverb monthly " + reverb_monthly_rev)
           }
       }
       //? Generate Reverb Widget 
@@ -470,6 +512,50 @@ function createReverbWidget(){
 //! Awesome Merch
 //! Captiv8
 
+//? Modal Listner stuff
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
 
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
 
 main();
