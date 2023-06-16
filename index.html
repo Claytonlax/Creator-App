@@ -17,72 +17,74 @@
   </head>
 
   <body>
-    <div>
-      <button id="options_btn">Add More Widgets</button>
-      <button id="example_btn">Example Data</button><!-- switch out with example data structure-->
-      <button id="goals_btn">Set Goals</button>
-      <div class = "title-container">
-        <h1 class = "title is-1 is-underlined" style = "color: #1d1e22;" >Influencers Unlimited</h1>
-      </div>
+    <div id="title-container">
+      <h1>Influencers Unlimited</h1>
+      <nav>
+        <button id="goals_btn" class="nav_btn">Set Goals</button>
+        <button id="example_btn" class="nav_btn">Example Data</button><!-- switch out with example data structure-->
+        <button id="options_btn" class="nav_btn">Add More Widgets</button>
+      </nav>
     </div>
     
+    <div id="div_extra_wrap_wrap">
+      <div id="goals_container" class="enter-username-container" style="display: none;">
+        <h2>Welcome!</h2> 
+        <form id="goals_form">
+          <label>User Name
+            <input id="user_name" placeholder="1willcobb"/>
+          </label>
+          <label>Monthly Revenue Goal
+            <input id="rev_goal" placeholder="10000"/>
+          </label>
+          <label>Monthly Influence
+            <input id="influence_goal" placeholder="2000"/>
+          </label>
+          <button id="enter" class="enter_btn">Save</button>
+        </form>
+      </div>
+    </div>
 
-    <div id="options_container" class="hide">
-        <div class="enter-username-container">
-          <h2>Welcome!</h2> 
-          <form id="goals_form">
-            <label>User Name
-              <input id="user_name" placeholder="1willcobb"/>
-            </label>
-            <label>Monthly Revenue Goal
-              <input id="rev_goal" placeholder="10000"/>
-            </label>
-            <label>Monthly Influence
-              <input id="influence_goal" placeholder="2000"/>
-            </label>
-            <button id="enter" class="enter_btn">Save</button>
-          </form>
-        </div>
-      <main>
-        <div class="options-container">
-          <div class = "column" id = "button-container">
-            <h2 class="category">Social Platforms</h2>
-            <div class= "button-group">
-            <button id="youtube" class="platforms">Youtube</button>
-            <button id="instagrm" class="platforms soon">Instagram</button>
-            <button id="snapchat" class="platforms soon">Snapchat</button>
-            <button id="tiktok" class="platforms soon">TikTok</button>
-            <button id="twitter" class="platforms soon">Twitter</button>
-            <button id="twitch" class="platforms soon">Twitch</button>
-            <button id="patreon" class="platforms soon">Patreon</button>
+      <div id="options-container" style="display: none;">
+        <div>
+          <div class="options-container">
+            <div class = "column" id = "button-container">
+              <h2 class="category">Social Platforms</h2>
+              <div class= "button-group">
+              <button id="youtube" class="platforms">Youtube</button>
+              <button id="instagrm" class="platforms soon">Instagram</button>
+              <button id="snapchat" class="platforms soon">Snapchat</button>
+              <button id="tiktok" class="platforms soon">TikTok</button>
+              <button id="twitter" class="platforms soon">Twitter</button>
+              <button id="twitch" class="platforms soon">Twitch</button>
+              <button id="patreon" class="platforms soon">Patreon</button>
+            </div>
           </div>
-        </div>
-        <div class = "column" id="button-container">
+          <div class = "column" id="button-container">
             <h2 class="category">Music Platforms</h2>
             <div class= "button-group">
-            <button id="spotify" class="platforms soon">Spotify</button>
-            <button id="apple_music" class="platforms soon">Apple Music</button>
+              <button id="spotify" class="platforms soon">Spotify</button>
+              <button id="apple_music" class="platforms soon">Apple Music</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Education Platforms</h2>
             <div class= "button-group">
-            <button id="skillshare" class="platforms soon">Skillshare</button>
-            <button id="teachable" class="platforms">Teachable</button>
-            <button id="kajabi" class="platforms soon">Kajabi</button>
-            <button id="udemy" class="platforms soon">Udemy</button>
-            <button id="thinkific" class="platforms soon">Thinkific</button>
+              <button id="skillshare" class="platforms soon">Skillshare</button>
+              <button id="teachable" class="platforms">Teachable</button>
+              <button id="kajabi" class="platforms soon">Kajabi</button>
+              <button id="udemy" class="platforms soon">Udemy</button>
+              <button id="thinkific" class="platforms soon">Thinkific</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
             <h2 class="category">Ecommerce Platforms</h2>
             <div class= "button-group">
-            <button id="shopify" class="platforms soon">Shopify</button>
-            <button id="wix" class="platforms soon">Wix</button>
-            <button id="squarespace" class="platforms soon">Squarespace</button>
-            <button id="amazon" class="platforms soon">Amazon</button>
-            <button id="etsy" class="platforms soon">Etsy</button>
-            <button id="reverb" class="platforms">Reverb</button>
+              <button id="shopify" class="platforms soon">Shopify</button>
+              <button id="wix" class="platforms soon">Wix</button>
+              <button id="squarespace" class="platforms soon">Squarespace</button>
+              <button id="amazon" class="platforms soon">Amazon</button>
+              <button id="etsy" class="platforms soon">Etsy</button>
+              <button id="reverb" class="platforms">Reverb</button>
             </div>
           </div>
           <div class = "column" id = "button-container">
@@ -97,33 +99,30 @@
             </div>
           </div>
         </div>
-      </main>
-      <div class="submit-container">
-        <button id="submit">Done</button>
-      </div>
-
-      <!--? Modal -->
-      <div id="user_input" class="modal">
-        <div class="modal-background"></div>
-        <div id="modal-content" class="modal-content" >
+        <div class="submit-container">
+          <button id="submit">Done</button>
         </div>
-        <button class="modal-close is-large" aria-label="close"></button>
       </div>
     </div>
+      
 
-    
-
-    
-    
-    <div id="goal_input_container">
-
+    <!--? Modal -->
+    <div id="user_input" class="modal">
+      <div class="modal-background"></div>
+      <div id="modal-content" class="modal-content" >
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
     </div>
+    
+    <div id="goal_input_container"></div>
+
+
     <div class="widget-container">
       <div id="user_stats">
         <div id="user_goals">
           <div>User: <span id="user_name_storage"></span></div>
           <div>Monthly Revenue Goal: $<span id="rev_goal_storage"></span></div>
-          <div>Monthly Influence Goal: $<span id="influence_goal_storage"></span></div>
+          <div>Influence Goal: <span id="influence_goal_storage"></span></div>
         </div>
         <div id="user_charts">Chart
           <div>Percent Towards Rev: <span id="percent_rev"></span></div>
@@ -139,52 +138,6 @@
       <div id="test_widget"></div>
     </div>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-    // Functions to open and close a modal
-    function openModal($el) {
-      $el.classList.add('is-active');
-    }
-
-    function closeModal($el) {
-      $el.classList.remove('is-active');
-    }
-
-    function closeAllModals() {
-      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
-        closeModal($modal);
-      });
-    }
-
-    // Add a click event on buttons to open a specific modal
-    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
-      const modal = $trigger.dataset.target;
-      const $target = document.getElementById(modal);
-
-      $trigger.addEventListener('click', () => {
-        openModal($target);
-      });
-    });
-
-    // Add a click event on various child elements to close the parent modal
-    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
-      const $target = $close.closest('.modal');
-
-      $close.addEventListener('click', () => {
-        closeModal($target);
-      });
-    });
-
-    // Add a keyboard event to close all modals
-    document.addEventListener('keydown', (event) => {
-      const e = event || window.event;
-
-      if (e.keyCode === 27) { // Escape key
-        closeAllModals();
-      }
-    });
-  });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bulma@0.9.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
     <script src="./assets/script.js"></script>

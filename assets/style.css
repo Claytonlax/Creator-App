@@ -4,25 +4,35 @@
     font-family: 'Roboto', sans-serif;;
 }
 
+html {
+    background-color:#39a0ca;
+}
 
 body{
     display: flex;
     flex-direction: column;
     background-color:#39a0ca;
-    height: 100vh;
     color: black;
+    padding: 1rem;
 }
 
-main {
-    display: flex;
-}
 
 form {
     display: flex;
     flex-direction: column;
 }
 
-.enter-username-container{
+nav {
+    position: absolute;
+    right: 1rem;
+}
+
+#div_extra_wrap_wrap{
+    display: flex;
+    justify-content: center;
+}
+
+#goals_container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,15 +77,6 @@ form {
 
 }
 
-
-.title-container{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5px;  
-}
-
-
 .platforms{
     background-color: #ddd;
     border: solid;
@@ -104,21 +105,34 @@ form {
 
 #title-container{
     display: flex;
-    padding: 20px;
-    width:50%;
+    align-items: center;
+    width:100%;
 }
 
 
-#title{
-    width: 672px;
-    height: 77px;
-    left: 48px;
-    top: 31px;
-    font-style:normal;
-    text-decoration: underline;
+#title-container h1{
+    margin-left: auto;
+    margin-right: auto;
     font-weight: 700;
-    font-size: 64px;
-    line-height: 77px;
+    font-size: 50px;
+}
+
+
+
+.nav_btn{
+    cursor: pointer;
+    color: #393f4d;
+    font-weight: bolder;
+    background-color: #feda6a;
+    padding: 5px 10px;
+    justify-content: center;
+    text-align: center;
+    border-radius: 15px;
+    
+}
+
+.nav_btn:hover {
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.253);
 }
 
 .goal-input-container{
@@ -126,16 +140,23 @@ form {
     display: grid;
 }
 
+#options-container{
+    display: none;
+    flex-direction: column;
+}
+
+
 .options-container{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100vw;
+    width: 100%;
+    transition: 1s;
 }
 
 .category{
-    background-color: red;
+    background-color: rgb(49, 167, 106);
     padding: 15px;
     border-radius:20px;
     width:100%;
@@ -186,9 +207,10 @@ form {
     width: 100%;
     height: auto;
     background-color: aliceblue;
-    margin: 1rem;
     padding: 1rem;
     border-radius: 15px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 #user_goals{
@@ -252,24 +274,6 @@ form {
 
 }
 
-#options_btn {
-    cursor: pointer;
-    color: #393f4d;
-    font-weight: bolder;
-    background-color: #feda6a;
-    padding-top: 0px;
-    padding-right: 4px;
-    padding-bottom: 0px;
-    padding-left: 4px;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    justify-content: center;
-    text-align: center;
-    border-radius: 8px;
-    box-shadow: 1px 2px 5px 1px;
-
-}
 
 .hide{
     display: none;
