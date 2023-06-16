@@ -267,7 +267,7 @@ for (let i = 0; i < placeholder_button.length; i++){
 goals_form.addEventListener("submit", function(){
   api_storage.user.name = user_name.value
   api_storage.user.monthly_rev = rev_goal.value
-  api_storage.user.monthly_influence = influence_goal.value
+  api_storage.user.influence = influence_goal.value
   setStorage(api_storage)
   console.log(api_storage)
 })
