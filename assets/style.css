@@ -22,13 +22,39 @@ form {
     flex-direction: column;
 }
 
-.enter-username-container{
-    display:flex;
+nav {
+    position: absolute;
+    right: 1rem;
+}
+
+#div_extra_wrap_wrap{
+    display: flex;
+    justify-content: center;
+}
+
+#goals_container{
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;  
-    padding: 30px;
+    font-weight: bolder;
+    margin-bottom: 20px;
+    background-color: orange;
+    width: fit-content;
+    height: fit-content;
+    padding-top: 5px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    border-radius: 16px;
+    box-shadow: 1px 2px 5px 1px;
+
 }
+
+.enter-username-container h1 {
+    font-size: xx-large;
+    margin-bottom: 20px; 
+  }
 
 .enter_btn{
     justify-content: center;
@@ -91,9 +117,7 @@ form {
     font-size: 50px;
 }
 
-#options_btn {
 
-}
 
 .nav_btn{
     cursor: pointer;
@@ -117,7 +141,7 @@ form {
 }
 
 #options-container{
-    display: flex;
+    display: none;
     flex-direction: column;
 }
 

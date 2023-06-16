@@ -41,11 +41,13 @@ const reverb_btn = document.getElementById('reverb');
 const placeholder_button = document.querySelectorAll('.soon')
 
 //* Data Structure for local storage
+const example_btn = document.getElementById('example_btn');
+
 var dataStructure = {
   user: {
     name: 'Will',
     monthly_rev: 20000,
-    influence: 10000
+    influence: 10000,
   },
   youtube: {
     widget_name: 'youtubeWidget',
@@ -87,6 +89,10 @@ var placeholderDataStructure = {
 
 //* App Startup
 
+
+/**
+ * This is the main function
+ */
 function main(){
   api_storage = getStorage();
   setStorage(api_storage);
@@ -137,8 +143,9 @@ function getStorage(){
     checkStorage();
   } else {
     console.log("No credentials Found")
-    api_storage = dataStructure;
-    options_container.removeAttribute("class", "hide")
+    api_storage = placeholderDataStructure;
+    showOptions();
+    showGoals();
   }
   return api_storage;
 }
@@ -268,11 +275,17 @@ goals_form.addEventListener("submit", function(){
 function updateUserInfo() {
   user_name_storage.textContent = api_storage.user.name
   rev_goal_storage.textContent = api_storage.user.monthly_rev
-  influence_goal_storage.textContent = api_storage.user.monthly_influence
+  influence_goal_storage.textContent = api_storage.user.influence
 }
 
 
-
+example_btn.addEventListener("click", function(){
+  localStorage.removeItem('api_storage')
+  api_storage = dataStructure;
+  console.log(api_storage)
+  setStorage(api_storage);
+  getStorage();
+})
 
 function showOptions(){
   options_container.style.display = "flex";
@@ -297,12 +310,23 @@ options_btn.addEventListener("click", function(){
   }
 });
 
+/**
+ * Shows the goals container for inputting goals to achieve
+ */
+function showGoals(){
+  goals_container.style.display = "flex";
+}
+
+function hideGoals(){
+  goals_container.style.display = "none";
+}
+
 goals_btn.addEventListener("click", function(){
-  if (goals_container.classList.contains("hide")){
-    goals_container.classList.remove("hide")
+  if (goals_container.style.display === "none"){
+    showGoals();
     goals_btn.textContent = "Hide Goals"
   } else {
-    goals_container.classList.add("hide")
+    hideGoals();
     goals_btn.textContent = "Set Goals"
   }
 });
@@ -320,18 +344,6 @@ function getCompare() {
 }
 
 
-
-
-/*
-- if NO local storage, start out on the "Add Widget" page
-
-- check local storage 
-- for each index, 
-  - Check the name, if the name matches a name of widgets, Fire that custom widget
-  - make a widget with title and 3 stats
-  - change color of the widget to match the color stated (use actual app reference)
-
-*/
 
 //*** Social Widgets ****/
 
