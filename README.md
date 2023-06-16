@@ -8,11 +8,20 @@ https://www.figma.com/file/Fmx1sUAOSJZDFFbjr8eenN/%22App-Name-Here%22---Project-
 
 ## Group Rolls
 
-* Project Manager:
-* UI:
-* UX:
-* API Developers:
+* Will: Project Lead (logic development, data structure)
+* Bryce: Baby-daddy (API Research, framework, Bulma implementation, CSS-styling)
+* Jared: Quality Control (API Research, styling, presentation polishing, display formatting)
+* Clayton: DungeonMaster (API Research, Eventlistener implementation, CSS-styling )
+* Lars: Compliance Officer (logic development, troubleshooting, API Research,)
 
+
+## Presentation Requirements
+
+* (Jared) Elevator pitch: A one-minute description of your application.
+* (Clayton) Concept: What is your user story? What was your motivation for development?
+* (Will) Process: What were the technologies used? How were tasks and roles broken down and assigned? What challenges did you encounter? What were your successes?
+* (Bryce) Demo: Show your stuff!
+* (Lars) Directions for future development.
 
 ## The Problem 
 
@@ -29,7 +38,7 @@ What if there was one place they could access their metrics, track and manage th
 
 * At this time, for each username/platform data that is provided, those widgets will be the widgets provided and the others will be hidden unless requested
               
-* a button should unhide those widgets if the creator wants to add more platforms. (the user will be greeted with a "COMING SOON" on every platform we do not find API for)
+* a button should display those widgets if the creator wants to add more platforms. (the user will be greeted with a "COMING SOON" on every platform we do not find API for)
 
 * Upon second log in, the User will be greeted with the widgets of choice with their corresponding data. 
 
@@ -38,6 +47,11 @@ What if there was one place they could access their metrics, track and manage th
 * There should be a goal setting widget, or maybe a page? 
 
 * Note some platforms we will not be able to gater financial or any data at all and should possibly have an input form for people to help calculate a total. 
+
+## Project Future
+
+* Users will be able to 
+
 
 ## Platforms considered
 
