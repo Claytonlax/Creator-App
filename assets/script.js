@@ -27,6 +27,8 @@ const percent_inf = document.getElementById('percent_inf')
 //* Goals
 const goals_container = document.getElementById('goals_container');
 const goals_btn = document.getElementById('goals_btn');
+var influence_comp = 0;
+var goal_rev = 0;
 
 //* GLOBALS
 var api_storage;
@@ -146,6 +148,7 @@ function getStorage(){
     api_storage = placeholderDataStructure;
     showOptions();
     showGoals();
+    
   }
   return api_storage;
 }
@@ -335,12 +338,13 @@ goals_btn.addEventListener("click", function(){
 //* Goal compared
 function getCompare() {
   console.log(api_storage.user.monthly_rev)
-  var goal_rev =  (((reverb_monthly_rev + teachable_monthly_rev) / api_storage.user.monthly_rev)*100).toFixed(2)
-  var influence_comp = (influence_number / api_storage.user.influence)*100
+  goal_rev =  (((reverb_monthly_rev + teachable_monthly_rev) / api_storage.user.monthly_rev)*100).toFixed(2)
+  influence_comp = (influence_number / api_storage.user.influence)*100
   console.log("goal rev: " + goal_rev)
   console.log("influencer: " + influence_comp)
   percent_rev.textContent = goal_rev + '%'
   percent_inf.textContent = influence_comp + '%'
+  renderChart();
 }
 
 
@@ -557,5 +561,103 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+//? CHART RENDER
+function renderChart() {
+
+  Highcharts.chart('container', {
+
+    chart: {
+        type: 'solidgauge',
+        height: '110%',
+    },
+  
+    title: {
+        text: 'Monthly Goals',
+        style: {
+            fontSize: '24px'
+        }
+    },
+  
+    tooltip: {
+        borderWidth: 0,
+        backgroundColor: 'none',
+        shadow: false,
+        style: {
+            fontSize: '16px'
+        },
+        valueSuffix: '%',
+        pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold">{point.y}</span>',
+        positioner: function (labelWidth) {
+            return {
+                x: (this.chart.chartWidth - labelWidth) / 2,
+                y: (this.chart.plotHeight / 2) + 15
+            };
+        }
+    },
+  
+    pane: {
+        startAngle: 0,
+        endAngle: 360,
+        background: [{ // Track for Move
+            outerRadius: '112%',
+            innerRadius: '89%',
+            backgroundColor: Highcharts.color(Highcharts.getOptions().colors[0])
+                .setOpacity(0.3)
+                .get(),
+            borderWidth: 0
+        }, { // Track for Exercise
+            outerRadius: '87%',
+            innerRadius: '63%',
+            backgroundColor: Highcharts.color(Highcharts.getOptions().colors[1])
+                .setOpacity(0.3)
+                .get(),
+            borderWidth: 0
+        }]
+    },
+  
+    yAxis: {
+        min: 0,
+        max: 100,
+        lineWidth: 0,
+        tickPositions: []
+    },
+  
+    plotOptions: {
+        solidgauge: {
+            dataLabels: {
+                enabled: false
+            },
+            linecap: 'round',
+            stickyTracking: false,
+            rounded: true
+        }
+    },
+  
+    series: [{
+        name: 'Revenue',
+        data: [{
+            color: Highcharts.getOptions().colors[0],
+            radius: '112%',
+            innerRadius: '88%',
+            y: 55
+        }]
+    }, {
+        name: 'Influence',
+        data: [{
+            color: Highcharts.getOptions().colors[1],
+            radius: '87%',
+            innerRadius: '63%',
+            y: 36
+        }]
+    }]
+  });
+};
+
+
+
+
+
+
 
 main();
