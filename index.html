@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/style.css" />
-    
   </head>
 
   <body>
@@ -36,7 +35,7 @@
           <label>Monthly Revenue Goal
             <input id="rev_goal" placeholder="10000"/>
           </label>
-          <label>Monthly Influence
+          <label>Monthly Influence Goal
             <input id="influence_goal" placeholder="2000"/>
           </label>
           <button id="enter" class="enter_btn">Save</button>
@@ -124,6 +123,9 @@
           <div>Monthly Revenue Goal: $<span id="rev_goal_storage"></span></div>
           <div>Influence Goal: <span id="influence_goal_storage"></span></div>
         </div>
+        <figure class="highcharts-figure">
+          <div id="container"></div>
+        </figure>
         <div id="user_charts">Chart
           <div>Percent Towards Rev: <span id="percent_rev"></span></div>
           <div>Percent Towards Influence: <span id="percent_inf"></span></div>
@@ -138,6 +140,12 @@
       <div id="test_widget"></div>
     </div>
 
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bulma@0.9.3"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.6/dayjs.min.js"></script>
     <script src="./assets/script.js"></script>
