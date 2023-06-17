@@ -283,6 +283,7 @@ nav {
 #container {
     max-width: 400px;
     margin: 0 auto;
+    background-color: #927c39;
 }
 
 .highcharts-figure,
