@@ -22,10 +22,7 @@ form {
     flex-direction: column;
 }
 
-nav {
-    position: absolute;
-    right: 1rem;
-}
+
 
 #div_extra_wrap_wrap{
     display: flex;
@@ -107,17 +104,22 @@ nav {
     display: flex;
     align-items: center;
     width:100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
 #title-container h1{
-    margin-left: auto;
-    margin-right: auto;
     font-weight: 700;
     font-size: 50px;
 }
 
-
+@media (min-width:1200px) {
+    .buttons-nav {
+        position:absolute;
+        right: 1rem;
+    }
+}
 
 .nav_btn{
     cursor: pointer;
