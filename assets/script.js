@@ -304,6 +304,7 @@ function hideOptions(){
 
 submit.addEventListener("click", function(){
   hideOptions();
+  options_btn.textContent = "Add More Widgets"
 });
 
 
