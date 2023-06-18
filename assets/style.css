@@ -5,13 +5,17 @@
 }
 
 html {
-    background-color:#39a0ca;
+    background-color:black;
+}
+
+h1 {
+    color:#87D2A7;    
 }
 
 body{
     display: flex;
     flex-direction: column;
-    background-color:#39a0ca;
+    background-color:black;
     color: black;
     padding: 1rem;
 }
@@ -35,8 +39,10 @@ form {
     justify-content: center;
     align-items: center;  
     font-weight: bolder;
+    color:black;
     margin-bottom: 20px;
-    background-color: orange;
+    margin-top: 20px;
+    background-color: #EEA186;
     width: fit-content;
     height: fit-content;
     padding-top: 5px;
@@ -58,7 +64,7 @@ form {
     background-color: #ddd;
     border: solid;
     border-color: aliceblue;
-    color: rgb(31, 31, 31);
+    color: black;
     font-weight: bolder;
     padding-top: 0px;
     padding-right: 4px;
@@ -75,9 +81,10 @@ form {
 }
 
 .platforms{
-    background-color: #ddd;
+    background-color: #F7D976;
     border: solid;
-    border-color: aliceblue;
+    font-weight: bolder;
+    border-color: black;
     color: rgb(31, 31, 31);
     padding: 10px 20px;
     text-align: center;
@@ -91,14 +98,19 @@ form {
 }
 
 .platforms:hover{
-    background-color: rgb(110, 110, 235);
+    background-color: skyblue;
 }
 
 .platforms:active{
-    background-color: rgb(37, 69, 253);
+    background-color: lightpink;
     
 }
 
+@media (min-width:1250px) {
+    #title-container {
+        font-size: smaller;
+    }
+}
 
 #title-container{
     display: flex;
@@ -112,9 +124,13 @@ form {
 #title-container h1{
     font-weight: 700;
     font-size: 50px;
+    
 }
 
-@media (min-width:1200px) {
+
+
+
+@media (min-width:1250px) {
     .buttons-nav {
         position:absolute;
         right: 1rem;
@@ -125,7 +141,7 @@ form {
     cursor: pointer;
     color: #393f4d;
     font-weight: bolder;
-    background-color: #feda6a;
+    background-color: #87D2A7;
     padding: 5px 10px;
     justify-content: center;
     text-align: center;
@@ -145,6 +161,7 @@ form {
 #options-container{
     display: none;
     flex-direction: column;
+    background: black;
 }
 
 
@@ -155,10 +172,12 @@ form {
     justify-content: center;
     width: 100%;
     transition: 1s;
+    background: black;
 }
 
 .category{
-    background-color: rgb(49, 167, 106);
+    background-color:#F7D976;
+    color: black;
     padding: 15px;
     border-radius:20px;
     width:100%;
@@ -171,7 +190,7 @@ form {
     flex-direction: column;
     text-align: center;
     padding-top: 10px;
-    background-color: aliceblue;
+    background-color: black;
     border-style: solid;
     border-color: black;
     border-radius: 20px;
@@ -181,6 +200,7 @@ form {
 
 }
 
+
 .button-group{
     display:inline-flex;
     flex-direction: column;
@@ -189,6 +209,7 @@ form {
 
 .widget-container{
     display: flex;
+    
 }
 
 .user-goal-input{
@@ -208,7 +229,7 @@ form {
     display: flex;
     width: 100%;
     height: auto;
-    background-color: aliceblue;
+    background-color: #C1A2EA;
     padding: 1rem;
     border-radius: 15px;
     margin-top: 1rem;
@@ -223,9 +244,11 @@ form {
     margin-left: auto;
 }
 
+
 .widget{
     position: flex;
-    background-color: white;
+    background-color: skyblue;
+    color: black;
     border-radius: 20px;
     border-style: solid;
     border-color: black;
@@ -238,6 +261,7 @@ form {
 #test_widget {
     width: 100%;
     flex: 1;
+    color: black;
     display: flex;
     gap: 1rem;
     flex-direction: row;
