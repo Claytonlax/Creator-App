@@ -94,6 +94,8 @@ form {
     cursor: pointer;
     border-radius: 16px;
     box-shadow: 1px 2px 5px 1px;
+
+    
     
 }
 
@@ -173,6 +175,7 @@ form {
     width: 100%;
     transition: 1s;
     background: black;
+    
 }
 
 .category{
@@ -354,3 +357,5 @@ form {
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
+
+
