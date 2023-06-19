@@ -4,18 +4,28 @@
     font-family: 'Roboto', sans-serif;;
 }
 
+:root{
+    --background: rgb(43, 43, 43);
+}
+
 html {
-    background-color:black;
+    background-color: var(--background);
 }
 
 h1 {
     color:#87D2A7;    
 }
 
+h3 {
+    font-weight: bolder;
+    font-size: 25px;
+    text-align: center;
+}
+
 body{
     display: flex;
     flex-direction: column;
-    background-color:black;
+    background-color:var(--background);
     color: black;
     padding: 1rem;
 }
@@ -26,6 +36,9 @@ form {
     flex-direction: column;
 }
 
+span {
+    font-weight: bold;
+}
 
 
 #div_extra_wrap_wrap{
@@ -80,11 +93,22 @@ form {
 
 }
 
+#youtube, #reverb, #teachable {
+    border-color: #F7D976;
+    border: 5px;
+    background-color: #9fd2b6;
+}
+
+#youtube:hover, #reverb:hover, #teachable:hover {
+    background-color: #b5ccbf;
+}
+
+
+
 .platforms{
     background-color: #F7D976;
     border: solid;
     font-weight: bolder;
-    border-color: black;
     color: rgb(31, 31, 31);
     padding: 10px 20px;
     text-align: center;
@@ -94,9 +118,6 @@ form {
     cursor: pointer;
     border-radius: 16px;
     box-shadow: 1px 2px 5px 1px;
-
-    
-    
 }
 
 .platforms:hover{
@@ -108,11 +129,7 @@ form {
     
 }
 
-@media (min-width:1250px) {
-    #title-container {
-        font-size: smaller;
-    }
-}
+
 
 #title-container{
     display: flex;
@@ -130,15 +147,6 @@ form {
 }
 
 
-
-
-@media (min-width:1250px) {
-    .buttons-nav {
-        position:absolute;
-        right: 1rem;
-    }
-}
-
 .nav_btn{
     cursor: pointer;
     color: #393f4d;
@@ -152,7 +160,8 @@ form {
 }
 
 .nav_btn:hover {
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.253);
+    background-color: #9fd2b6;
+    box-shadow: 1px 0px 5px rgba(255, 255, 255, 0.381);
 }
 
 .goal-input-container{
@@ -163,7 +172,7 @@ form {
 #options-container{
     display: none;
     flex-direction: column;
-    background: black;
+    background: var(--background);
 }
 
 
@@ -174,12 +183,12 @@ form {
     justify-content: center;
     width: 100%;
     transition: 1s;
-    background: black;
+    background: var(--background);
     
 }
 
 .category{
-    background-color:#F7D976;
+    background-color:#ea7c7c;
     color: black;
     padding: 15px;
     border-radius:20px;
@@ -193,7 +202,6 @@ form {
     flex-direction: column;
     text-align: center;
     padding-top: 10px;
-    background-color: black;
     border-style: solid;
     border-color: black;
     border-radius: 20px;
@@ -359,3 +367,16 @@ form {
 }
 
 
+
+@media (min-width:1250px) {
+    .buttons-nav {
+        position:absolute;
+        right: 1rem;
+    }
+}
+
+@media (min-width:1250px) {
+    #title-container {
+        font-size: smaller;
+    }
+}

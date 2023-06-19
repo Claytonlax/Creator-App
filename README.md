@@ -1,10 +1,6 @@
-# Creator_App
+# Influencers Unlimited
 
 The Creator App is an app to manage a Creator's cross platform influence and financial management.
-
-## Figma
-
-https://www.figma.com/file/Fmx1sUAOSJZDFFbjr8eenN/%22App-Name-Here%22---Project-1-Group-Project?type=design&node-id=0%3A1&t=8fKFVH06Jsgbxh1K-1
 
 ## Group Rolls
 
@@ -14,8 +10,7 @@ https://www.figma.com/file/Fmx1sUAOSJZDFFbjr8eenN/%22App-Name-Here%22---Project-
 * Clayton: DungeonMaster (API Research, Eventlistener implementation, CSS-styling )
 * Lars: Compliance Officer (logic development, troubleshooting, API Research,)
 
-
-## Presentation Requirements
+## Project Presenters
 
 * (Jared) Elevator pitch: A one-minute description of your application.
 * (Clayton) Concept: What is your user story? What was your motivation for development?
@@ -23,34 +18,39 @@ https://www.figma.com/file/Fmx1sUAOSJZDFFbjr8eenN/%22App-Name-Here%22---Project-
 * (Bryce) Demo: Show your stuff!
 * (Lars) Directions for future development.
 
-## The Problem 
+## The Problem
 
 Creators post their content and utilize multiple platforms while only having access to 1 at a time, or multiple windows open to see and track all their data at once. 
-What if there was one place they could access their metrics, track and manage their income, and budget and set goals for the future of their career. 
+What if there was one place they could access their metrics, track and manage their income, and budget and set goals for managing their monthly finances and the future of their career. 
 
 ## Project Description
 
-* As a user I want to see all my social media, commerce, courses, and merch data in once place.
+As a Creator making content and operating your brand across many platforms, you may have a hard time aggregate your data in one place to see how well you are doing financially and influentially. Influencers Unlimited is here to help. Now you can aggregate your data in one place and set goals you want to strive for monthly. 
 
-* the User will log in securely and for the app to remember my data. 
+When you first open the app you are greated with instructions
 
-* If first log in, the User will put in my USER NAME for each platform, and any special API keys once and those to be remembered. 
+Then you will need to set you NAME, REVENUE GOAL, and INFLUENCE goal before progressing. You can go back to these goals any time while using the app with the “Set Goals” button.
 
-* At this time, for each username/platform data that is provided, those widgets will be the widgets provided and the others will be hidden unless requested
-              
-* a button should display those widgets if the creator wants to add more platforms. (the user will be greeted with a "COMING SOON" on every platform we do not find API for)
+Then, Choose a platform you would like your data to be tracked on. (Currently available widgets are highlighted in green). 
 
-* Upon second log in, the User will be greeted with the widgets of choice with their corresponding data. 
+Input the required API or User Name request and hit Done. 
 
-* A master widget spanning the whole top will be on top holding an average of all incomes, an average of entire social impact, and distance to goals.
+This will save your access to that platform and if the information is correct, a new widget will appear with your data. 
 
-* There should be a goal setting widget, or maybe a page? 
+Press the “Add More Widgets” button to add more platform widgets to your dashboard. 
 
-* Note some platforms we will not be able to gater financial or any data at all and should possibly have an input form for people to help calculate a total. 
+If you are testing out the platform and do not have, or wish to put in your own info. Hit the “Example Data” button to input data from a few example creators. 
+
+You will see a comparison graph called “Monthly Goals” update with your goals compared to the data gathered from the platforms you have chosen and you will see widgets below that show more data on your desired platforms.
+
 
 ## Project Future
 
-* Users will be able to 
+* There are many more platforms we want to get operational so we will continue to discovered and utilize these new platforms and APIs. 
+
+* We would like to compare more data in the main data and goal setting display. As well as display individualized platform goals and charts. 
+
+* The design is simplistic at the moment and we would love to add further design elements.
 
 
 ## Platforms considered
@@ -61,15 +61,14 @@ What if there was one place they could access their metrics, track and manage th
 * Instaragram
 * TikTok
 * Twitter (paid)
-* YouTube - https://developers.google.com/youtube/v3/docs/channels
-`https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${channelId}&key=${apiKey}`
+* YouTube * ACTIVE
 * Twitch
 * Snap chat
 * Patreon
 
 ### Music
 
-* Spotify - $.003 - $.005 per stream 
+* Spotify
 * Apple Music
 
 ### Courses
@@ -97,7 +96,26 @@ What if there was one place they could access their metrics, track and manage th
 
 ## Competition
 
-Platforms like social blade[https://socialblade.com/youtube/c/1willcobb] and VidIQ [https://vidiq.com/] both leverage the YouTube API and parse comparisons. They also use key word searching with potentially the google search API. But they both are generally single platform and dont let you agigate multi platform or finances. 
+Platforms like social blade[https://socialblade.com/youtube/c/1willcobb] and VidIQ [https://vidiq.com/] both leverage the YouTube API and parse comparisons. They also use key word searching with potentially the google search API. But they both are generally single platform and don't let you aggregate multi platform or finances. 
 
-CAN'T GET MY BRANCH TO WORK - HELP!!
+## Design Concepts
+
+[Figma](https://www.figma.com/file/Fmx1sUAOSJZDFFbjr8eenN/%22App-Name-Here%22---Project-1-Group-Project?type=design&node-id=0%3A1&t=8fKFVH06Jsgbxh1K-1)
+
+## Demo Images
+
+![demo](./assets/images/Main%20Page%20Desktop.png)
+![demo](./assets/images/Main%20Page%20Moble.png)
+![demo](./assets/images/Options.png)
+![demo](./assets/images/Goals%20solo.png)
+![demo](./assets/images/Coming%20Soon%20Modal.png)
+![demo](./assets/images/Welcome%20and%20Info.png)
+
+## GitHub Repository
+
+[repo](https://github.com/Claytonlax/Creator-App-2)
+
+## Live Site
+
+[Influencers Unlimited](https://claytonlax.github.io/Creator-App-2/)
 
