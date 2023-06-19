@@ -8,6 +8,7 @@ const submit = document.getElementById('submit');
 const options_container = document.getElementById('options-container');
 const user_input_modal = document.getElementById('user_input');
 const modal_content = document.getElementById('modal-content');
+const info = document.getElementById('info');
 
 //* User Info
 const goals_form = document.getElementById('goals_form')
@@ -21,7 +22,6 @@ const rev_goal_storage = document.getElementById('rev_goal_storage')
 const influence_goal_storage = document.getElementById('influence_goal_storage')
 const percent_rev = document.getElementById('percent_rev')
 const percent_inf = document.getElementById('percent_inf')
-
 
 
 //* Goals
@@ -48,7 +48,7 @@ const example_btn = document.getElementById('example_btn');
 var dataStructure = {
   user: {
     name: 'Will',
-    monthly_rev: 20000,
+    monthly_rev: 500,
     influence: 10000,
   },
   youtube: {
@@ -113,8 +113,8 @@ function checkStorage(){
   console.log("checking storage...")
   if (api_storage.youtube.channelName !== ''){
     console.log("Youtube credentials found!")
-    //var promise = createYoutubeWidget();
-    //promises.push(promise);
+    var promise = createYoutubeWidget();
+    promises.push(promise);
   }
   if (api_storage.teachable.apiKey !== ''){
     console.log("Teachable credentials found!")
@@ -151,7 +151,7 @@ function getStorage(){
     api_storage = placeholderDataStructure;
     showOptions();
     showGoals();
-    
+    infoShow();
   }
   return api_storage;
 }
@@ -338,9 +338,34 @@ options_btn.addEventListener("click", function(){
   }
 });
 
-/**
- * Shows the goals container for inputting goals to achieve
- */
+function infoShow() {
+  user_input_modal.classList.add('is-active');
+  modal_content.innerHTML =
+  '<h1 style="text-align: center;">Welcome To Influencers Unlimited</h1>' +
+  '<br/>' +
+  '<p>As a Creator making content and operating your brand across many platforms, you may have a hard time aggregating your data in one place to see how well you are doing financially and influentially.<p>' +
+  '<br/>' +
+  '<p>Influencers Unlimited is here to help.</p>' +
+  '<br/>' +
+  '<p>Now you can aggregate your data in one place and set goals you want to strive for monthly.</p>' +
+  '<br/>' +
+  '<p>When you first open the app, set you NAME, REVENUE GOAL, and INFLUENCE goal before progressing. You can go back to these goals any time while using the app with the “Set Goals” button.</p>' +
+  '<br/>' +
+  '<p>Then, Choose a platform you would like your data to be tracked on. (Currently available widgets are highlighted in green). Input the required API or User Name request and hit Done. This will save your access to that platform and if the information is correct, a new widget will appear with your data. Press the “Add More Widgets” button to add more platform widgets to your dashboard.</p>' +
+  '<br/>' +
+  '<p>If you are here to test out the platform and do not have, or wish to put in your own info. Hit the “Example Data” button to input data from a few example creators.</p>' +
+  '<br/>' +
+  '<p>You will see a comparison graph called “Monthly Goals”  update with your goals compared to the data gathered from the platforms you have chosen.</p>' +
+  '<br/>' +
+  '<p>We are so glad we could help and keep on making great content Creators!</p>' +
+  '<br/>'
+
+}
+
+info.addEventListener("click", function(){
+  infoShow()
+})
+
 function showGoals(){
   goals_container.style.display = "flex";
 }
@@ -594,7 +619,7 @@ Highcharts.chart('container', {
   chart: {
       type: 'solidgauge',
       height: '110%',
-      backgroundColor: '#eff8ff',
+      backgroundColor: '#C1A2EA',
   },
 
   title: {
