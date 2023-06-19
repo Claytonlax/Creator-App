@@ -403,7 +403,7 @@ function createYoutubeWidget() {
             //? Generate Youtube Widget
             const ytWidget = document.createElement("div");
             ytWidget.setAttribute("class", "widget");
-            ytWidget.innerHTML = '<h1>YouTube</h1>' + 
+            ytWidget.innerHTML = '<h3>YouTube</h3>' + 
             '<div>Channel Name: ' + channelName + '</div>' +
             '<div>Subscriber Count: '+ subscriberCount + '</div>' +
             '<div>Video Count: '+ videoCount + '</div>' + 
@@ -470,7 +470,7 @@ function createTeachableWidget() {
           //? Generate Teachable Widget
           const teachWidget = document.createElement("div");
           teachWidget.setAttribute("class", "widget");
-          teachWidget.innerHTML = '<h1>Teachable</h1>' + 
+          teachWidget.innerHTML = '<h3>Teachable</h3>' + 
           '<div>Monthly Revenue: $'+ monthly_rev + '</div>' +
           '<div>Total Revenue TD: $'+ total_rev + '</div>' + 
           '<br/>'
@@ -520,7 +520,7 @@ function createReverbWidget(){
       //? Generate Reverb Widget 
       const teachWidget = document.createElement("div");
       teachWidget.setAttribute("class", "widget");
-      teachWidget.innerHTML = '<h1>Reverb</h1>' + 
+      teachWidget.innerHTML = '<h3>Reverb</h3>' + 
       '<div>Monthly Revenue: $'+ reverb_monthly_rev + '</div>' +
       '<div>Total Revenue TD: $'+ total_rev + '</div>' + 
       '<br/>'

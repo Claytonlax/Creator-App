@@ -12,6 +12,12 @@ h1 {
     color:#87D2A7;    
 }
 
+h3 {
+    font-weight: bolder;
+    font-size: 25px;
+    text-align: center;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -80,6 +86,10 @@ form {
 
 }
 
+#youtube, #reverb, #teachable {
+    border: 5px, solid, #51492f;
+}
+
 .platforms{
     background-color: #F7D976;
     border: solid;
@@ -94,9 +104,6 @@ form {
     cursor: pointer;
     border-radius: 16px;
     box-shadow: 1px 2px 5px 1px;
-
-    
-    
 }
 
 .platforms:hover{
@@ -179,7 +186,7 @@ form {
 }
 
 .category{
-    background-color:#F7D976;
+    background-color:#ea7c7c;
     color: black;
     padding: 15px;
     border-radius:20px;
