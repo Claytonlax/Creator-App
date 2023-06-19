@@ -102,7 +102,6 @@ youtubePLaceholder = {
 function main(){
   api_storage = getStorage();
   setStorage(api_storage);
-  console.log(api_storage);
 }
 
 
@@ -262,7 +261,6 @@ reverb_btn.addEventListener("click", function(){
 //? Placeholders
 for (let i = 0; i < placeholder_button.length; i++){
   placeholder_button[i].addEventListener("click", function(){
-    console.log("You made it to a placeholder")
     user_input_modal.classList.add('is-active');
     modal_content.innerHTML =
     '<h1>COMING SOON</h1>' +
@@ -271,12 +269,34 @@ for (let i = 0; i < placeholder_button.length; i++){
 }
 
 //? User Data Listeners
-goals_form.addEventListener("submit", function(){
-  api_storage.user.name = user_name.value
-  api_storage.user.monthly_rev = rev_goal.value
-  api_storage.user.influence = influence_goal.value
+goals_form.addEventListener("submit", function(event){
+  if (rev_goal.value === '' || influence_goal.value === ''){
+    event.preventDefault()
+    user_input_modal.classList.add('is-active');
+    modal_content.innerHTML =
+    '<h2>Please Set Goals</h2>'
+  } else {
+    api_storage.user.monthly_rev = rev_goal.value
+    api_storage.user.influence = influence_goal.value
+  }
+  if (isNaN(rev_goal.value) || isNaN(influence_goal.value)){
+    event.preventDefault()
+    user_input_modal.classList.add('is-active');
+    modal_content.innerHTML =
+    '<h2>Goals Must Be Numbers</h2>'
+  } else {
+    api_storage.user.monthly_rev = rev_goal.value
+    api_storage.user.influence = influence_goal.value
+  }
+  if (user_name.value === '') {
+    event.preventDefault()
+    user_input_modal.classList.add('is-active');
+    modal_content.innerHTML =
+    '<h2>User Name Required</h2>'
+  } else {
+    api_storage.user.name = user_name.value
+  }
   setStorage(api_storage)
-  console.log(api_storage)
 })
 
 function updateUserInfo() {
@@ -342,11 +362,8 @@ goals_btn.addEventListener("click", function(){
 
 //* Goal compared
 function getCompare() {
-  console.log(api_storage.user.monthly_rev)
   goal_rev =  parseInt((((reverb_monthly_rev + teachable_monthly_rev) / api_storage.user.monthly_rev)*100).toFixed(2))
   influence_comp = parseInt(((influence_number / api_storage.user.influence)*100).toFixed(2))
-  console.log("goal rev: " + goal_rev)
-  console.log("influencer: " + influence_comp)
   percent_rev.textContent = goal_rev + '%'
   percent_inf.textContent = influence_comp + '%'
   chartRender();
