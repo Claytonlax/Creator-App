@@ -238,6 +238,7 @@ span {
 
 #user_stats {
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
     height: auto;
     background-color: #C1A2EA;
@@ -269,13 +270,17 @@ span {
     padding: .5rem;
 }
 
+
+
+
 #test_widget {
     width: 100%;
-    flex: 1;
     color: black;
     display: flex;
     gap: 1rem;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .submit-container{
@@ -372,11 +377,5 @@ span {
     .buttons-nav {
         position:absolute;
         right: 1rem;
-    }
-}
-
-@media (min-width:1250px) {
-    #title-container {
-        font-size: smaller;
     }
 }
