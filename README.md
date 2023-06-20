@@ -1,13 +1,13 @@
 # Influencers Unlimited
 
-The Creator App is an app to manage a Creator's cross platform influence and financial management.
+The Influencers Unlimited App is an app to manage a Creator's cross platform influence and financial management.
 
 ## Group Rolls
 
 * Will: Project Lead (logic development, data structure)
-* Bryce: Baby-daddy (API Research, framework, Bulma implementation, CSS-styling)
+* Bryce: Software Developer (API Research, framework, Bulma implementation, CSS-styling)
 * Jared: Quality Control (API Research, styling, presentation polishing, display formatting)
-* Clayton: DungeonMaster (API Research, Eventlistener implementation, CSS-styling )
+* Clayton: Scrum Master (API Research, Eventlistener implementation, CSS-styling )
 * Lars: Compliance Officer (logic development, troubleshooting, API Research,)
 
 ## Project Presenters

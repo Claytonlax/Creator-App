@@ -67,9 +67,15 @@ span {
 
 }
 
-.enter-username-container h1 {
+
+#goals_form {
+    align-items: end;
+}
+
+.enter-username-container h2 {
     font-size: xx-large;
-    margin-bottom: 20px; 
+    font-weight: bolder;
+    margin-bottom: 10px; 
   }
 
 .enter_btn{
