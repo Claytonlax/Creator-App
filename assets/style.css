@@ -25,6 +25,7 @@ h3 {
 body{
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color:var(--background);
     color: black;
     padding: 1rem;
@@ -245,7 +246,7 @@ span {
 #user_stats {
     display: flex;
     width: 100%;
-    height: auto;
+    max-height: 100%;
     background-color: #C1A2EA;
     padding: 1rem;
     border-radius: 15px;
@@ -274,9 +275,6 @@ span {
     bottom: 8px;
     padding: .5rem;
 }
-
-
-
 
 #test_widget {
     width: 100%;
@@ -329,7 +327,7 @@ span {
 
 #container {
     height: 100%;
-    width: 100%;
+    max-width: 600px;
 }
 
 .highcharts-figure,
@@ -376,7 +374,7 @@ span {
 }
 
 
-@media (min-width:1250px) {
+@media screen and (min-width:1250px) {
     .buttons-nav {
         position:absolute;
         right: 1rem;
@@ -384,7 +382,7 @@ span {
 }
 
 
-@media (max-width:1500px) {
+@media screen and (max-width:1500px) {
 
     .buttons-nav {
         display: flex;
@@ -411,7 +409,7 @@ span {
     }
 }
 
-@media (max-width:600px) {
+@media screen and (max-width:600px) {
     body{
         align-items: center;
         width: auto;
