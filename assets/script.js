@@ -610,7 +610,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-chartRender();
 
 function chartRender() {
   //? CHART RENDER
@@ -618,7 +617,7 @@ Highcharts.chart('container', {
 
   chart: {
       type: 'solidgauge',
-      height: '110%',
+      height: '100%',
       backgroundColor: '#C1A2EA',
   },
 
@@ -700,7 +699,8 @@ Highcharts.chart('container', {
           innerRadius: '63%',
           y: influence_comp
       }]
-  }]
+  }], 
+
 });
 }
 

@@ -244,7 +244,6 @@ span {
 
 #user_stats {
     display: flex;
-    flex-wrap: wrap;
     width: 100%;
     height: auto;
     background-color: #C1A2EA;
@@ -329,9 +328,8 @@ span {
 
 
 #container {
-    max-width: 400px;
-    margin: 0 auto;
-    background-color: #927c39;
+    height: 100%;
+    width: 100%;
 }
 
 .highcharts-figure,
@@ -378,10 +376,45 @@ span {
 }
 
 
-
 @media (min-width:1250px) {
     .buttons-nav {
         position:absolute;
         right: 1rem;
     }
+}
+
+
+@media (max-width:1500px) {
+
+    .buttons-nav {
+        display: flex;
+        justify-content: center;
+    }
+
+    #user_stats{
+        flex-direction: column;
+        margin: 10px;
+        
+    } 
+    #user_goals, #user_charts{
+        margin:0;
+    }
+
+    #container{
+        height: 100%;
+        width: 100%;
+    }
+
+
+    #title-container h1{
+        text-align: center;
+    }
+}
+
+@media (max-width:600px) {
+    body{
+        align-items: center;
+        width: auto;
+    }
+
 }
